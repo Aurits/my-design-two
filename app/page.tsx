@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from 'react'
-
 import { 
   ArrowRight, 
   Award, 
@@ -393,10 +392,7 @@ export default function AegisHomepage() {
                   <div className="relative">
                     <button 
                       className="text-white font-medium px-8 py-4 text-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 relative"
-                      style={{ 
-                        backgroundColor: colors.primary,
-                        clipPath: 'polygon(0% 0%, 85% 0%, 100% 100%, 15% 100%)'
-                      }}
+                      style={{ backgroundColor: colors.primary }}
                     >
                       {slide.cta}
                     </button>
@@ -637,10 +633,7 @@ export default function AegisHomepage() {
               <div key={index} className="group">
                 <div 
                   className={`h-full overflow-hidden border-2 transition-all duration-300 group-hover:shadow-2xl group-hover:-translate-y-2 bg-white relative`}
-                  style={{ 
-                    borderColor: advantage.color,
-                    clipPath: advantage.trapezium ? 'polygon(0% 0%, 100% 5%, 100% 100%, 0% 95%)' : 'none'
-                  }}
+                  style={{ borderColor: advantage.color }}
                 >
                   {/* Header */}
                   <div className="relative h-48 overflow-hidden">
@@ -653,10 +646,7 @@ export default function AegisHomepage() {
                     <div className="absolute top-6 left-6">
                       <div 
                         className={`w-20 h-20 flex items-center justify-center text-white transition-transform duration-300 group-hover:scale-110`}
-                        style={{ 
-                          backgroundColor: advantage.color,
-                          clipPath: advantage.trapezium ? 'polygon(0% 0%, 85% 0%, 100% 100%, 15% 100%)' : 'none'
-                        }}
+                        style={{ backgroundColor: advantage.color }}
                       >
                         {advantage.icon}
                       </div>
@@ -686,10 +676,7 @@ export default function AegisHomepage() {
                     {/* Gold CTA Button */}
                     <button 
                       className="w-full font-medium group-hover:shadow-lg transition-all duration-300 py-3 text-white relative"
-                      style={{ 
-                        backgroundColor: colors.primary,
-                        clipPath: 'polygon(0% 0%, 85% 0%, 100% 100%, 15% 100%)'
-                      }}
+                      style={{ backgroundColor: colors.primary }}
                     >
                       {language === "JP" ? "詳細を見る" : "Learn More"}
                       <ArrowRight className="w-4 h-4 ml-2 inline transition-transform duration-300 group-hover:translate-x-1" />
@@ -990,10 +977,7 @@ export default function AegisHomepage() {
           <div className="mb-16">
             <div 
               className="border-2 overflow-hidden bg-white shadow-lg"
-              style={{ 
-                borderColor: colors.primary,
-                clipPath: 'polygon(2% 0%, 100% 0%, 98% 100%, 0% 100%)'
-              }}
+              style={{ borderColor: colors.primary }}
             >
               <div className="grid md:grid-cols-3 gap-0">
                 {/* Phone Contact */}
@@ -1032,10 +1016,7 @@ export default function AegisHomepage() {
                 <div className="p-8 text-center bg-gray-50">
                   <button 
                     className="w-full font-bold py-4 mb-2 text-xl hover:opacity-90 transition-colors text-white relative"
-                    style={{ 
-                      backgroundColor: colors.primary,
-                      clipPath: 'polygon(0% 0%, 85% 0%, 100% 100%, 15% 100%)'
-                    }}
+                    style={{ backgroundColor: colors.primary }}
                   >
                     {language === "JP" ? "お問い合わせ" : "Contact Us"}
                   </button>
@@ -1316,15 +1297,8 @@ export default function AegisHomepage() {
                     {/* Content Block */}
                     <div className={`w-5/12 ${item.side === "left" ? "text-right pr-16" : "pl-16"}`}>
                       <div
-                        className={`p-8 shadow-lg group hover:shadow-xl transition-all duration-300 relative ${index === 0 || index === 2 ? '' : ''}`}
-                        style={{ 
-                          backgroundColor: item.color,
-                          clipPath: index === 0 || index === 2 ? (
-                            item.side === "left" 
-                              ? 'polygon(5% 0%, 100% 0%, 100% 85%, 0% 100%)'
-                              : 'polygon(0% 0%, 95% 0%, 100% 100%, 0% 85%)'
-                          ) : 'none'
-                        }}
+                        className={`p-8 shadow-lg group hover:shadow-xl transition-all duration-300 relative`}
+                        style={{ backgroundColor: item.color }}
                       >
                         <div className="text-white">
                           <div className="text-6xl font-bold mb-4 opacity-90">{item.year}</div>
@@ -1468,10 +1442,7 @@ export default function AegisHomepage() {
                   <div key={index} className="w-full flex-shrink-0">
                     <div
                       className="bg-white border-2 overflow-hidden shadow-2xl"
-                      style={{ 
-                        borderColor: news.color,
-                        clipPath: 'polygon(0% 0%, 90% 0%, 100% 100%, 10% 100%)'
-                      }}
+                      style={{ borderColor: news.color }}
                     >
                       <div className="relative">
                         <img src={news.image} alt={news.title} className="w-full h-96 object-cover" />
