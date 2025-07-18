@@ -1,10 +1,13 @@
-import type { Metadata } from 'next'
-import './globals.css'
+import type React from "react"
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
+import ClientLayout from "./ClientLayout" // Import ClientLayout
+
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.dev',
+  title: "AEGIS LLP",
+  description: "地方自治体のデジタル変革を推進するAEGIS LLP",
 }
 
 export default function RootLayout({
@@ -12,9 +15,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
-  )
+  return <ClientLayout>{children}</ClientLayout>
 }

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WORKS.05 - 建設安全設備</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            animation: {
+              float: "float 20s ease-in-out infinite",
+              "pulse-slow": "pulse 3s ease-in-out infinite",
+              shimmer: "shimmer 3s ease-in-out infinite",
+              slide: "slide 15s linear infinite",
+              "rotate-slow": "rotate 30s linear infinite",
+              "bobble-1": "bobble 4s ease-in-out infinite",
+              "bobble-2": "bobble 4s ease-in-out 1s infinite",
+              "bobble-3": "bobble 4s ease-in-out 2s infinite",
+              "bobble-4": "bobble 4s ease-in-out 3s infinite",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0) rotate(0deg)" },
+                "50%": { transform: "translateY(-20px) rotate(180deg)" },
+              },
+              shimmer: {
+                "0%": { backgroundPosition: "-200% 0" },
+                "100%": { backgroundPosition: "200% 0" },
+              },
+              slide: {
+                "0%": { transform: "translateX(0)" },
+                "100%": { transform: "translateX(50%)" },
+              },
+              rotate: {
+                "0%": { transform: "rotate(0deg)" },
+                "100%": { transform: "rotate(360deg)" },
+              },
+              bobble: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-10px)" },
+              },
+            },
+            backgroundImage: {
+              "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Custom styles that can't be done with Tailwind utilities */
+      .gradient-text {
+        background: linear-gradient(45deg, #0066cc, #00a0e9);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .gradient-text-animated {
+        background: linear-gradient(135deg, #999 0%, #0066cc 50%, #999 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        background-size: 200% 100%;
+      }
+
+      .service-number-gradient {
+        background: linear-gradient(
+          135deg,
+          rgba(0, 102, 204, 0.1) 0%,
+          rgba(0, 160, 233, 0.1) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .vertical-text {
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+      }
+
+      .hover-fill::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: #0066cc;
+        transition: all 0.3s ease;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        z-index: -1;
+      }
+
+      .hover-fill:hover::before {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+      }
+
+      .liquid-button::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 300%;
+        background: linear-gradient(135deg, #0066cc 0%, #00a0e9 100%);
+        transition: all 0.5s ease;
+        transform: translate(-50%, -50%) rotate(45deg);
+        z-index: -1;
+      }
+
+      .liquid-button:hover::before {
+        width: 120%;
+      }
+
+      /* Animated background patterns */
+      .animated-bg::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -50%;
+        width: 200%;
+        height: 100%;
+        background: linear-gradient(
+          45deg,
+          transparent 30%,
+          rgba(0, 102, 204, 0.05) 50%,
+          transparent 70%
+        );
+        animation: slide 15s linear infinite;
+      }
+
+      /* Gradient border animation for recruit images */
+      .gradient-border::before {
+        content: "";
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        background: linear-gradient(45deg, #0066cc, #00a0e9, #0066cc);
+        border-radius: 150px;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: -1;
+        background-size: 200% 200%;
+        animation: gradientShift 3s ease infinite;
+      }
+
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .gradient-border:hover::before {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 text-gray-800 overflow-x-hidden">
+    <!-- Header -->
+    <header
+      class="bg-gradient-to-br from-white to-gray-50 py-5 shadow-lg mb-16 relative overflow-hidden"
+    >
+      <div
+        class="absolute -top-1/2 -right-10 w-80 h-80 bg-gradient-radial from-blue-500/10 to-transparent rounded-full animate-float"
+      ></div>
+      <div class="max-w-7xl mx-auto px-5 relative z-10">
+        <div class="text-3xl font-black gradient-text tracking-wider">
+          WORKS.05
+        </div>
+      </div>
+    </header>
+
+    <!-- Works Grid Section -->
+    <section class="max-w-7xl mx-auto px-5 mb-24">
+      <h2 class="text-5xl font-black text-blue-600 mb-12 relative pb-5">
+        施工実績
+        <span
+          class="absolute bottom-0 left-0 w-24 h-1 bg-gradient-to-r from-blue-600 to-cyan-500"
+        ></span>
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <!-- Work Item 1 -->
+        <div
+          class="bg-white overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 relative group"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-transparent to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
+          ></div>
+          <div class="overflow-hidden">
+            <img
+              src="https://placehold.co/400x250"
+              alt="防護ネット設置工事"
+              class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+          </div>
+          <div class="p-8 relative z-20">
+            <div
+              class="text-sm text-cyan-600 mb-2 font-semibold tracking-wider"
+            >
+              2025年5月施工
+            </div>
+            <h3
+              class="text-2xl font-extrabold mb-5 text-gray-800 group-hover:text-blue-600 transition-colors duration-300"
+            >
+              防球ネット設置工事
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="bg-gradient-to-br from-blue-50 to-cyan-50 text-blue-600 px-4 py-2 text-sm font-semibold border-2 border-transparent hover:border-blue-600 hover:text-white transition-all duration-300 relative overflow-hidden hover-fill"
+                >防護欄工事</span
+              >
+              <span
+                class="bg-gradient-to-br from-blue-50 to-cyan-50 text-blue-600 px-4 py-2 text-sm font-semibold border-2 border-transparent hover:border-blue-600 hover:text-white transition-all duration-300 relative overflow-hidden hover-fill"
+                >一般土木・外構工事</span
+              >
+              <span
+                class="bg-gradient-to-br from-blue-50 to-cyan-50 text-blue-600 px-4 py-2 text-sm font-semibold border-2 border-transparent hover:border-blue-600 hover:text-white transition-all duration-300 relative overflow-hidden hover-fill"
+                >愛知県</span
+              >
+              <span
+                class="bg-gradient-to-br from-blue-50 to-cyan-50 text-blue-600 px-4 py-2 text-sm font-semibold border-2 border-transparent hover:border-blue-600 hover:text-white transition-all duration-300 relative overflow-hidden hover-fill"
+                >清須市</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Work Item 2 -->
+        <div
+          class="bg-white overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 relative group"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-transparent to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
+          ></div>
+          <div class="overflow-hidden">
+            <img
+              src="https://placehold.co/400x250"
+              alt="ごみ集積所フェンス"
+              class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+          </div>
+          <div class="p-8 relative z-20">
+            <div
+              class="text-sm text-cyan-600 mb-2 font-semibold tracking-wider"
+            >
+              2025年6月施工
+            </div>
+            <h3
+              class="text-2xl font-extrabold mb-5 text-gray-800 group-hover:text-blue-600 transition-colors duration-300"
+            >
+              ごみ集積所フェンス設置修繕
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="bg-gradient-to-br from-blue-50 to-cyan-50 text-blue-600 px-4 py-2 text-sm font-semibold border-2 border-transparent hover:border-blue-600 hover:text-white transition-all duration-300 relative overflow-hidden hover-fill"
+                >一般土木・外構工事</span
+              >
+              <span
+                class="bg-gradient-to-br from-blue-50 to-cyan-50 text-blue-600 px-4 py-2 text-sm font-semibold border-2 border-transparent hover:border-blue-600 hover:text-white transition-all duration-300 relative overflow-hidden hover-fill"
+                >その他</span
+              >
+              <span
+                class="bg-gradient-to-br from-blue-50 to-cyan-50 text-blue-600 px-4 py-2 text-sm font-semibold border-2 border-transparent hover:border-blue-600 hover:text-white transition-all duration-300 relative overflow-hidden hover-fill"
+                >愛知県</span
+              >
+              <span
+                class="bg-gradient-to-br from-blue-50 to-cyan-50 text-blue-600 px-4 py-2 text-sm font-semibold border-2 border-transparent hover:border-blue-600 hover:text-white transition-all duration-300 relative overflow-hidden hover-fill"
+                >小牧市</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Work Item 3 -->
+        <div
+          class="bg-white overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 relative group"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-transparent to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
+          ></div>
+          <div class="overflow-hidden">
+            <img
+              src="https://placehold.co/400x250"
+              alt="PCフェンス設置工事"
+              class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+          </div>
+          <div class="p-8 relative z-20">
+            <div
+              class="text-sm text-cyan-600 mb-2 font-semibold tracking-wider"
+            >
+              2025年6月施工
+            </div>
+            <h3
+              class="text-2xl font-extrabold mb-5 text-gray-800 group-hover:text-blue-600 transition-colors duration-300"
+            >
+              PCフェンス設置工事
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="bg-gradient-to-br from-blue-50 to-cyan-50 text-blue-600 px-4 py-2 text-sm font-semibold border-2 border-transparent hover:border-blue-600 hover:text-white transition-all duration-300 relative overflow-hidden hover-fill"
+                >防護欄工事</span
+              >
+              <span
+                class="bg-gradient-to-br from-blue-50 to-cyan-50 text-blue-600 px-4 py-2 text-sm font-semibold border-2 border-transparent hover:border-blue-600 hover:text-white transition-all duration-300 relative overflow-hidden hover-fill"
+                >愛知県</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Electrical Equipment Section -->
+    <section
+      class="bg-gradient-to-br from-gray-50 via-white to-blue-50 py-24 mb-1 relative overflow-hidden animated-bg"
+    >
+      <div
+        class="max-w-6xl mx-auto px-5 flex flex-col lg:flex-row items-center gap-20 relative z-10"
+      >
+        <div class="flex-1 relative">
+          <span
+            class="absolute -left-24 top-1/2 -translate-y-1/2 text-cyan-600 tracking-widest font-semibold opacity-50 vertical-text text-sm"
+            >電気設備事業</span
+          >
+          <div
+            class="absolute -top-16 right-0 text-9xl font-black opacity-10 service-number-gradient animate-pulse-slow"
+          >
+            ０１
+          </div>
+          <h2 class="text-4xl font-black mb-6 gradient-text">電気設備事業</h2>
+          <p class="text-gray-600 text-lg leading-relaxed mb-10">
+            建築工事とともに進行する配線作業や<br />
+            器具設置のための設計から土地管理、<br />
+            人材手配、施工までサポート。
+          </p>
+          <a
+            href="#"
+            class="inline-flex items-center gap-2 text-blue-600 font-extrabold text-lg px-8 py-3 bg-gradient-to-br from-transparent to-blue-500/10 hover:text-white transition-all duration-300 relative overflow-hidden liquid-button"
+          >
+            詳細を見る
+            <span class="ml-2">→</span>
+          </a>
+        </div>
+        <div class="flex-1 max-w-lg relative group">
+          <div
+            class="absolute -inset-5 bg-gradient-to-r from-blue-600 to-cyan-500 opacity-10 group-hover:opacity-20 transition-all duration-500 group-hover:-inset-8"
+          ></div>
+          <img
+            src="https://placehold.co/600x400"
+            alt="電気設備工事"
+            class="w-full shadow-2xl relative z-10 transform group-hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-6xl mx-auto px-5 py-16">
+      <h2
+        class="text-3xl text-gray-600 tracking-wide leading-relaxed font-light"
+      >
+        工場から公共施設、<br />
+        個人住宅も電気設備工事<br />
+        総合パートナー。
+      </h2>
+    </div>
+
+    <!-- Service Section 1: Guard Rail Construction -->
+    <section class="bg-white py-24 mb-1 relative overflow-hidden animated-bg">
+      <div
+        class="max-w-6xl mx-auto px-5 flex flex-col lg:flex-row items-center gap-20 relative z-10"
+      >
+        <div class="flex-1 relative">
+          <div
+            class="absolute -top-16 right-0 text-9xl font-black opacity-10 service-number-gradient animate-pulse-slow"
+          >
+            ０２
+          </div>
+          <div
+            class="text-cyan-600 text-base mb-4 font-bold tracking-widest uppercase"
+          >
+            サービス
+          </div>
+          <h2 class="text-4xl font-black mb-6 gradient-text">防護柵工事</h2>
+          <h3 class="text-4xl font-black mb-6 gradient-text">
+            防護柵で<br />街のイメージを形作る
+          </h3>
+          <p class="text-gray-600 text-lg leading-loose mb-10">
+            ガードレールやガードパイプ、車止めなどの防護柵を設置しています。<br />
+            防護柵には歩行者や車両を守るだけでなく、その街らしい空間を形作るという役割も。<br /><br />
+            その街を象徴するような防護柵を設置することで、より愛されるまちづくりに貢献していきます。
+          </p>
+          <a
+            href="#"
+            class="inline-flex items-center gap-2 text-blue-600 font-extrabold text-lg px-8 py-3 bg-gradient-to-br from-transparent to-blue-500/10 hover:text-white transition-all duration-300 relative overflow-hidden liquid-button"
+          >
+            詳しくはこちら
+            <span class="ml-2">→</span>
+          </a>
+        </div>
+        <div class="flex-1 max-w-lg relative group">
+          <div
+            class="absolute -inset-5 bg-gradient-to-r from-blue-600 to-cyan-500 opacity-10 group-hover:opacity-20 transition-all duration-500 group-hover:-inset-8"
+          ></div>
+          <img
+            src="https://placehold.co/500x400"
+            alt="防護柵工事"
+            class="w-full shadow-2xl relative z-10 transform group-hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Section 2: Reflector Construction -->
+    <section class="bg-white py-24 mb-1 relative overflow-hidden animated-bg">
+      <div
+        class="max-w-6xl mx-auto px-5 flex flex-col lg:flex-row-reverse items-center gap-20 relative z-10"
+      >
+        <div class="flex-1 relative">
+          <div
+            class="absolute -top-16 right-0 text-9xl font-black opacity-10 service-number-gradient animate-pulse-slow"
+          >
+            ０３
+          </div>
+          <div
+            class="text-cyan-600 text-base mb-4 font-bold tracking-widest uppercase"
+          >
+            サービス
+          </div>
+          <h2 class="text-4xl font-black mb-6 gradient-text">反射鏡工事</h2>
+          <h3 class="text-4xl font-black mb-6 gradient-text">
+            車両と歩行者の<br />安全を守る要
+          </h3>
+          <p class="text-gray-600 text-lg leading-loose mb-10">
+            公道市の道路反射鏡および警告用のホームミラーを設置しています。<br /><br />
+            見通しの悪い道路や交差点で対向車や歩行者、障害物などを確認するには、道路反射鏡・カーブミラーが欠かせません。<br /><br />
+            ご要望や会社の出入口、倉庫、コンビニなどにも設置可能ですので、お気軽にご相談ください。
+          </p>
+          <a
+            href="#"
+            class="inline-flex items-center gap-2 text-blue-600 font-extrabold text-lg px-8 py-3 bg-gradient-to-br from-transparent to-blue-500/10 hover:text-white transition-all duration-300 relative overflow-hidden liquid-button"
+          >
+            詳しくはこちら
+            <span class="ml-2">→</span>
+          </a>
+        </div>
+        <div class="flex-1 max-w-lg relative group">
+          <div
+            class="absolute -inset-5 bg-gradient-to-r from-blue-600 to-cyan-500 opacity-10 group-hover:opacity-20 transition-all duration-500 group-hover:-inset-8"
+          ></div>
+          <img
+            src="https://placehold.co/500x400"
+            alt="反射鏡工事"
+            class="w-full shadow-2xl relative z-10 transform group-hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Purpose Section -->
+    <section
+      class="bg-gradient-to-br from-blue-600 to-cyan-500 py-32 mb-20 relative overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-radial from-white/10 to-transparent rounded-full w-full h-full animate-rotate-slow"
+      ></div>
+      <div
+        class="max-w-6xl mx-auto px-5 flex flex-col lg:flex-row items-center gap-20 relative z-10"
+      >
+        <div class="flex-1">
+          <h2
+            class="text-5xl font-black mb-10 leading-tight text-white drop-shadow-lg"
+          >
+            目指すのは、<br />「皆が安心して<br />住める<br />まちの創造」
+          </h2>
+          <p class="text-white/90 text-lg leading-loose mb-10">
+            誰もが安心して日々の生活を送るために欠かせない交通安全。<br /><br />
+            私たちは2000年の創業から20年以上にわたり、交通安全事業に特化したプロフェッショナル集団として「皆が安心して住めるまちの創造」に取り組んでいます。
+          </p>
+          <a
+            href="#"
+            class="inline-flex items-center gap-2 bg-white text-blue-600 font-extrabold text-lg px-8 py-3 hover:bg-white/90 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300"
+          >
+            サンケイの強みへ
+            <span class="ml-2">→</span>
+          </a>
+        </div>
+        <div
+          class="flex-1 grid grid-cols-2 gap-8 transform rotate-3 hover:rotate-0 transition-transform duration-500"
+        >
+          <img
+            src="https://placehold.co/300x200"
+            alt="安全な街づくり1"
+            class="w-full h-56 object-cover shadow-2xl transform -translate-x-2 -translate-y-2 hover:translate-x-0 hover:translate-y-0 hover:scale-105 transition-all duration-500"
+          />
+          <img
+            src="https://placehold.co/300x200"
+            alt="安全な街づくり2"
+            class="w-full h-56 object-cover shadow-2xl transform translate-x-2 translate-y-2 hover:translate-x-0 hover:translate-y-0 hover:scale-105 transition-all duration-500"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Recruit Section -->
+    <section
+      class="bg-gradient-to-b from-gray-50 via-white to-gray-50 py-32 text-center relative overflow-hidden"
+    >
+      <div
+        class="absolute -top-48 -left-48 w-96 h-96 rounded-full bg-gradient-radial from-blue-500/5 to-transparent animate-float"
+      ></div>
+      <div
+        class="absolute -bottom-48 -right-48 w-96 h-96 rounded-full bg-gradient-radial from-blue-500/5 to-transparent animate-float"
+        style="animation-direction: reverse"
+      ></div>
+
+      <h2
+        class="text-7xl font-thin tracking-widest mb-5 gradient-text-animated animate-shimmer"
+      >
+        RECRUIT
+      </h2>
+      <p class="text-lg text-gray-600 mb-16 tracking-wider">
+        採用情報/スタッフインタビュー
+      </p>
+
+      <div class="flex justify-center gap-8 mb-16 flex-wrap max-w-5xl mx-auto">
+        <img
+          src="https://placehold.co/200x300"
+          alt="スタッフ1"
+          class="w-52 h-80 object-cover rounded-full shadow-2xl hover:scale-110 hover:rotate-6 hover:shadow-blue-500/30 transition-all duration-500 relative gradient-border animate-bobble-1"
+        />
+        <img
+          src="https://placehold.co/200x300"
+          alt="スタッフ2"
+          class="w-52 h-80 object-cover rounded-full shadow-2xl hover:scale-110 hover:rotate-6 hover:shadow-blue-500/30 transition-all duration-500 relative gradient-border animate-bobble-2 mt-10"
+        />
+        <img
+          src="https://placehold.co/200x300"
+          alt="スタッフ3"
+          class="w-52 h-80 object-cover rounded-full shadow-2xl hover:scale-110 hover:rotate-6 hover:shadow-blue-500/30 transition-all duration-500 relative gradient-border animate-bobble-3 mt-5"
+        />
+        <img
+          src="https://placehold.co/200x300"
+          alt="スタッフ4"
+          class="w-52 h-80 object-cover rounded-full shadow-2xl hover:scale-110 hover:rotate-6 hover:shadow-blue-500/30 transition-all duration-500 relative gradient-border animate-bobble-4 mt-16"
+        />
+      </div>
+
+      <a
+        href="#"
+        class="inline-block bg-white text-blue-600 px-12 py-4 border-4 border-blue-600 font-extrabold text-lg tracking-wide hover:text-white hover:border-transparent hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-300 relative overflow-hidden liquid-button"
+      >
+        詳しくはこちら →
+      </a>
+    </section>
+  </body>
+</html>
