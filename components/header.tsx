@@ -18,55 +18,50 @@ export default function Header() {
     }, [])
 
     const navItems = [
-        { jp: "ホーム", en: "HOME", href: "/" },
-        { jp: "会社概要", en: "ABOUT", href: "/about" },
-        { jp: "サービス", en: "SERVICES", href: "/services" },
-        { jp: "プロジェクト", en: "PROJECTS", href: "/projects" },
-        { jp: "技術・DX", en: "TECHNOLOGY", href: "/technology" },
-        { jp: "ニュース", en: "NEWS", href: "/news" },
-        { jp: "採用情報", en: "CAREERS", href: "/careers" },
-        { jp: "お問い合わせ", en: "CONTACT", href: "/contact" },
+        { label: "ホーム", href: "/" },
+        { label: "会社概要", href: "/about" },
+        { label: "サービス", href: "/services" },
+        { label: "プロジェクト", href: "/projects" },
+        { label: "技術・DX", href: "/technology" },
+        { label: "ニュース", href: "/news" },
+        { label: "採用情報", href: "/careers" },
+        { label: "お問い合わせ", href: "/contact" },
     ]
 
     return (
         <header
             className={`fixed w-full top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-                    ? "bg-white/95 backdrop-blur-sm shadow-xl py-3"
-                    : "bg-gradient-to-br from-white to-gray-50 shadow-lg py-4"
+                    ? "bg-white/95 backdrop-blur-sm shadow-xl py-2 md:py-3"
+                    : "bg-gradient-to-br from-white to-gray-50 shadow-lg py-3 md:py-4"
                 }`}
         >
             {/* Animated background shape */}
-            <div className="absolute -top-1/2 -right-10 w-80 h-80 bg-gradient-radial from-primary/10 to-transparent rounded-full animate-float pointer-events-none" />
+            <div className="absolute -top-1/2 -right-10 w-60 h-60 md:w-80 md:h-80 bg-gradient-radial from-primary/10 to-transparent rounded-full animate-float pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between">
                     {/* Logo */}
                     <div className="relative z-10">
                         <Link href="/" className="block">
-                            <div className="text-3xl font-black gradient-text tracking-wider">
+                            <div className="text-2xl md:text-3xl font-black gradient-text tracking-wider">
                                 AEGIS LLP
                             </div>
-                            <div className="text-xs text-gray-600 tracking-widest">
-                                DIGITAL TRANSFORMATION PARTNER
+                            <div className="text-[10px] md:text-xs text-gray-600 tracking-widest hidden sm:block">
+                                デジタル変革パートナー
                             </div>
                         </Link>
                     </div>
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+                    <nav className="hidden lg:flex items-center gap-4 xl:gap-6">
                         {navItems.map((item, index) => (
                             <Link
                                 key={index}
                                 href={item.href}
                                 className="relative group py-2"
                             >
-                                <div className="flex flex-col items-center">
-                                    <div className="text-sm text-gray-600 group-hover:text-primary transition-colors duration-200">
-                                        {item.jp}
-                                    </div>
-                                    <div className="text-xs font-bold tracking-wider text-primary group-hover:text-secondary transition-colors duration-200">
-                                        {item.en}
-                                    </div>
+                                <div className="text-sm xl:text-base font-medium text-gray-700 hover:text-primary transition-colors duration-200">
+                                    {item.label}
                                 </div>
                                 {/* Animated underline */}
                                 <div className="absolute bottom-0 left-0 w-full h-0.5 bg-cta transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
@@ -75,20 +70,20 @@ export default function Header() {
                     </nav>
 
                     {/* Right Side - Desktop */}
-                    <div className="hidden lg:flex items-center gap-6">
+                    <div className="hidden lg:flex items-center gap-4 xl:gap-6">
                         <div className="text-right">
-                            <div className="text-xl font-bold text-secondary">
+                            <div className="text-base xl:text-xl font-bold text-secondary">
                                 <a href="tel:03-1234-5678" className="hover:text-primary transition-colors duration-200">
-                                    TEL: 03-1234-5678
+                                    03-1234-5678
                                 </a>
                             </div>
-                            <div className="text-xs text-gray-600">受付時間 平日 9:00-17:00</div>
+                            <div className="text-[10px] xl:text-xs text-gray-600">平日 9:00-17:00</div>
                         </div>
 
-                        {/* CTA Button with sharp corners */}
+                        {/* CTA Button */}
                         <Link
                             href="/contact"
-                            className="relative bg-cta text-white font-bold px-8 py-3 text-sm uppercase tracking-wider hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:bg-primary group overflow-hidden"
+                            className="relative bg-cta text-white font-bold px-4 xl:px-6 py-2 xl:py-3 text-sm xl:text-base hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:bg-primary group overflow-hidden"
                         >
                             <span className="relative z-10">お問い合わせ</span>
                             {/* Animated background effect */}
@@ -115,7 +110,7 @@ export default function Header() {
 
             {/* Mobile Menu Panel */}
             <div
-                className={`fixed top-0 right-0 h-full w-80 bg-white z-50 lg:hidden transform transition-transform duration-300 shadow-2xl ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+                className={`fixed top-0 right-0 h-full w-[280px] sm:w-80 bg-white z-50 lg:hidden transform transition-transform duration-300 shadow-2xl ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"
                     }`}
             >
                 <div className="flex items-center justify-between p-4 border-b border-gray-200">
@@ -139,13 +134,8 @@ export default function Header() {
                             className="py-4 border-b border-gray-100 block group"
                         >
                             <div className="flex justify-between items-center">
-                                <div>
-                                    <div className="text-lg font-medium text-gray-800 group-hover:text-primary transition-colors duration-200">
-                                        {item.jp}
-                                    </div>
-                                    <div className="text-sm text-gray-500 uppercase tracking-wider">
-                                        {item.en}
-                                    </div>
+                                <div className="text-lg font-medium text-gray-800 group-hover:text-primary transition-colors duration-200">
+                                    {item.label}
                                 </div>
                                 <div className="text-gray-400 group-hover:text-primary transition-colors duration-200">
                                     →
@@ -165,7 +155,7 @@ export default function Header() {
 
                         <div className="text-center pt-4 border-t border-gray-200">
                             <div className="text-xl font-bold mb-2 text-secondary">
-                                <a href="tel:03-1234-5678">TEL: 03-1234-5678</a>
+                                <a href="tel:03-1234-5678">03-1234-5678</a>
                             </div>
                             <div className="text-sm text-gray-600">受付時間 平日 9:00-17:00</div>
                         </div>

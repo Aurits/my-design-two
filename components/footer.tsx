@@ -1,15 +1,15 @@
 "use client"
 
-import { Building2, ChevronRight, Clock, Mail, MapPin } from "lucide-react"
+import { Building2, ChevronRight, Clock, Mail, MapPin, Users } from "lucide-react"
 import Link from "next/link"
 
 export default function Footer() {
     return (
-        <footer className="bg-primary text-white relative overflow-hidden">
-            {/* Animated background pattern */}
-            <div className="absolute inset-0 opacity-10">
-                <div className="absolute top-0 left-0 w-96 h-96 bg-secondary rounded-full animate-pulse-slow" />
-                <div className="absolute bottom-0 right-0 w-80 h-80 bg-cta rounded-full animate-pulse-slow" style={{ animationDelay: "2s" }} />
+        <footer className="bg-gray-50 text-gray-800 relative overflow-hidden">
+            {/* Subtle geometric pattern */}
+            <div className="absolute inset-0">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-gray-100/50 to-transparent rounded-full" />
+                <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-gray-100/30 to-transparent rounded-full" />
             </div>
 
             <div className="relative z-10">
@@ -19,44 +19,44 @@ export default function Footer() {
                         {/* Column 1: Company Overview */}
                         <div className="space-y-6">
                             <div>
-                                <div className="text-3xl font-black mb-2">AEGIS LLP</div>
-                                <div className="text-sm text-secondary tracking-wider font-medium">
+                                <div className="text-3xl font-black mb-2 text-gray-900">AEGIS LLP</div>
+                                <div className="text-sm text-gray-600 tracking-wider font-medium">
                                     DIGITAL TRANSFORMATION PARTNER
                                 </div>
                             </div>
 
-                            <p className="text-gray-200 leading-relaxed">
+                            <p className="text-gray-600 leading-relaxed">
                                 地方自治体のデジタル変革を支える信頼できるパートナー
                             </p>
 
                             <div className="space-y-3">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 bg-secondary/20 flex items-center justify-center">
-                                        <Building2 className="w-5 h-5 text-secondary" />
+                                    <div className="w-10 h-10 bg-white border border-gray-200 flex items-center justify-center">
+                                        <Building2 className="w-5 h-5 text-gray-500" />
                                     </div>
                                     <div>
-                                        <p className="text-sm text-gray-300">設立</p>
-                                        <p className="font-bold">2020年</p>
+                                        <p className="text-sm text-gray-500">設立</p>
+                                        <p className="font-bold text-gray-900">2020年</p>
                                     </div>
                                 </div>
 
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 bg-cta/20 flex items-center justify-center">
-                                        <Users className="w-5 h-5 text-cta" />
+                                    <div className="w-10 h-10 bg-white border border-gray-200 flex items-center justify-center">
+                                        <Users className="w-5 h-5 text-gray-500" />
                                     </div>
                                     <div>
-                                        <p className="text-sm text-gray-300">従業員数</p>
-                                        <p className="font-bold">200名</p>
+                                        <p className="text-sm text-gray-500">従業員数</p>
+                                        <p className="font-bold text-gray-900">200名</p>
                                     </div>
                                 </div>
                             </div>
 
                             {/* Certification Badges */}
                             <div className="flex gap-3">
-                                <div className="bg-white/10 backdrop-blur-sm px-4 py-2 text-xs font-bold">
+                                <div className="bg-white border border-gray-200 px-4 py-2 text-xs font-bold text-gray-700">
                                     ISO 27001
                                 </div>
-                                <div className="bg-white/10 backdrop-blur-sm px-4 py-2 text-xs font-bold">
+                                <div className="bg-white border border-gray-200 px-4 py-2 text-xs font-bold text-gray-700">
                                     ISMS
                                 </div>
                             </div>
@@ -64,8 +64,8 @@ export default function Footer() {
 
                         {/* Column 2: Services */}
                         <div>
-                            <h3 className="text-lg font-bold mb-6 flex items-center gap-2">
-                                <div className="w-1 h-6 bg-secondary" />
+                            <h3 className="text-lg font-bold mb-6 flex items-center gap-2 text-gray-900">
+                                <div className="w-1 h-6 bg-primary" />
                                 サービス一覧
                             </h3>
                             <ul className="space-y-3">
@@ -79,19 +79,19 @@ export default function Footer() {
                                     <li key={index}>
                                         <Link
                                             href={service.href}
-                                            className="text-gray-200 hover:text-white hover:translate-x-2 transition-all duration-200 flex items-center gap-2 group"
+                                            className="text-gray-600 hover:text-primary hover:translate-x-2 transition-all duration-200 flex items-center gap-2 group"
                                         >
-                                            <ChevronRight className="w-4 h-4 text-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                                            <ChevronRight className="w-4 h-4 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                                             <span>{service.name}</span>
                                         </Link>
                                     </li>
                                 ))}
                             </ul>
 
-                            <div className="mt-6 pt-6 border-t border-white/20">
+                            <div className="mt-6 pt-6 border-t border-gray-200">
                                 <Link
                                     href="/services"
-                                    className="inline-flex items-center gap-2 text-cta font-bold hover:gap-4 transition-all duration-200"
+                                    className="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all duration-200"
                                 >
                                     全サービス一覧
                                     <span>→</span>
@@ -101,8 +101,8 @@ export default function Footer() {
 
                         {/* Column 3: Resources */}
                         <div>
-                            <h3 className="text-lg font-bold mb-6 flex items-center gap-2">
-                                <div className="w-1 h-6 bg-cta" />
+                            <h3 className="text-lg font-bold mb-6 flex items-center gap-2 text-gray-900">
+                                <div className="w-1 h-6 bg-primary" />
                                 リソース
                             </h3>
                             <ul className="space-y-3">
@@ -118,9 +118,9 @@ export default function Footer() {
                                     <li key={index}>
                                         <Link
                                             href={item.href}
-                                            className="text-gray-200 hover:text-white hover:translate-x-2 transition-all duration-200 flex items-center gap-2 group"
+                                            className="text-gray-600 hover:text-primary hover:translate-x-2 transition-all duration-200 flex items-center gap-2 group"
                                         >
-                                            <ChevronRight className="w-4 h-4 text-cta opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                                            <ChevronRight className="w-4 h-4 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                                             <span>{item.name}</span>
                                         </Link>
                                     </li>
@@ -131,21 +131,21 @@ export default function Footer() {
                         {/* Column 4: Contact */}
                         <div className="space-y-6">
                             {/* Phone Numbers */}
-                            <div className="bg-white/10 backdrop-blur-sm p-6 space-y-4">
+                            <div className="bg-white border border-gray-200 p-6 space-y-4">
                                 <div>
-                                    <p className="text-sm text-gray-300 mb-1">代表電話</p>
+                                    <p className="text-sm text-gray-500 mb-1">代表電話</p>
                                     <a
                                         href="tel:03-1234-5678"
-                                        className="text-2xl font-bold text-secondary hover:text-cta transition-colors duration-200"
+                                        className="text-2xl font-bold text-primary hover:text-primary/80 transition-colors duration-200"
                                     >
                                         03-1234-5678
                                     </a>
                                 </div>
                                 <div>
-                                    <p className="text-sm text-gray-300 mb-1">緊急連絡先 (24時間)</p>
+                                    <p className="text-sm text-gray-500 mb-1">緊急連絡先 (24時間)</p>
                                     <a
                                         href="tel:03-1234-5679"
-                                        className="text-xl font-bold text-cta hover:text-secondary transition-colors duration-200"
+                                        className="text-xl font-bold text-gray-700 hover:text-primary transition-colors duration-200"
                                     >
                                         03-1234-5679
                                     </a>
@@ -155,19 +155,19 @@ export default function Footer() {
                             {/* Contact Button */}
                             <Link
                                 href="/contact"
-                                className="block w-full bg-cta text-white font-bold py-4 text-center hover:bg-secondary transition-all duration-300 transform hover:scale-105 relative overflow-hidden group"
+                                className="block w-full bg-primary text-white font-bold py-4 text-center hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 relative overflow-hidden group"
                             >
                                 <span className="relative z-10">お問い合わせフォーム</span>
-                                <div className="absolute inset-0 bg-secondary transform translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                                <div className="absolute inset-0 bg-primary/80 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                             </Link>
 
                             {/* Business Hours */}
                             <div className="space-y-4">
-                                <h4 className="font-bold flex items-center gap-2">
-                                    <Clock className="w-4 h-4 text-secondary" />
+                                <h4 className="font-bold flex items-center gap-2 text-gray-900">
+                                    <Clock className="w-4 h-4 text-gray-500" />
                                     営業時間
                                 </h4>
-                                <div className="text-sm space-y-2 text-gray-200">
+                                <div className="text-sm space-y-2 text-gray-600">
                                     <p>平日: 9:00 - 17:00</p>
                                     <p>土曜: 9:00 - 12:00 (緊急対応)</p>
                                     <p>日祝: 休業</p>
@@ -175,9 +175,9 @@ export default function Footer() {
                             </div>
 
                             {/* 24/7 Services */}
-                            <div className="bg-secondary/20 p-4 space-y-2">
-                                <h4 className="font-bold text-sm">24時間対応サービス</h4>
-                                <ul className="text-sm space-y-1 text-gray-200">
+                            <div className="bg-white border border-gray-200 p-4 space-y-2">
+                                <h4 className="font-bold text-sm text-gray-900">24時間対応サービス</h4>
+                                <ul className="text-sm space-y-1 text-gray-600">
                                     <li>• 既存顧客技術サポート</li>
                                     <li>• 緊急システム障害対応</li>
                                     <li>• セキュリティインシデント</li>
@@ -187,9 +187,9 @@ export default function Footer() {
                     </div>
 
                     {/* Office Locations */}
-                    <div className="border-t border-white/20 pt-8 mb-8">
-                        <h3 className="text-lg font-bold mb-6 flex items-center gap-2">
-                            <MapPin className="w-5 h-5 text-secondary" />
+                    <div className="border-t border-gray-200 pt-8 mb-8">
+                        <h3 className="text-lg font-bold mb-6 flex items-center gap-2 text-gray-900">
+                            <MapPin className="w-5 h-5 text-gray-500" />
                             事業所一覧
                         </h3>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -212,21 +212,21 @@ export default function Footer() {
                             ].map((office, index) => (
                                 <div
                                     key={index}
-                                    className={`bg-white/5 backdrop-blur-sm p-4 border-l-4 ${office.type === "primary" ? "border-cta" : "border-secondary"
+                                    className={`bg-white p-4 border-l-4 ${office.type === "primary" ? "border-primary" : "border-gray-300"
                                         }`}
                                 >
-                                    <h4 className="font-bold mb-2">{office.name}</h4>
-                                    <p className="text-sm text-gray-200">{office.address}</p>
+                                    <h4 className="font-bold mb-2 text-gray-900">{office.name}</h4>
+                                    <p className="text-sm text-gray-600">{office.address}</p>
                                 </div>
                             ))}
                         </div>
                     </div>
 
                     {/* Footer Bottom */}
-                    <div className="border-t border-white/20 pt-8">
+                    <div className="border-t border-gray-200 pt-8">
                         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
                             <div className="flex items-center gap-6">
-                                <p className="text-sm text-gray-300">
+                                <p className="text-sm text-gray-500">
                                     © 2024 AEGIS LLP. All rights reserved.
                                 </p>
                             </div>
@@ -242,7 +242,7 @@ export default function Footer() {
                                         <a
                                             key={index}
                                             href="#"
-                                            className="w-10 h-10 bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-200 transform hover:scale-110"
+                                            className="w-10 h-10 bg-white border border-gray-200 hover:border-primary hover:text-primary flex items-center justify-center transition-all duration-200 transform hover:scale-110 text-gray-600"
                                             aria-label={social.name}
                                         >
                                             <span className="text-sm font-bold">{social.icon}</span>
@@ -253,7 +253,7 @@ export default function Footer() {
                                 {/* Newsletter Signup */}
                                 <Link
                                     href="/newsletter"
-                                    className="bg-secondary text-white font-medium px-6 py-2 hover:bg-cta transition-all duration-300 flex items-center gap-2 group"
+                                    className="bg-primary text-white font-medium px-6 py-2 hover:bg-primary/90 transition-all duration-300 flex items-center gap-2 group"
                                 >
                                     <Mail className="w-4 h-4" />
                                     <span>最新情報を受け取る</span>
@@ -267,6 +267,3 @@ export default function Footer() {
         </footer>
     )
 }
-
-// Add this import if needed
-import { Users } from "lucide-react"
