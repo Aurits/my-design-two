@@ -999,9 +999,6 @@ export default function AegisHomepage() {
                 <div className="h-1 w-full bg-primary" />
                 <div className="p-6 md:p-8">
                   <div className="flex items-center mb-6">
-                    <div className="w-12 h-12 bg-primary text-white flex items-center justify-center mr-4">
-                      <Building2 className="w-6 h-6" strokeWidth={1.5} />
-                    </div>
                     <div>
                       <h3 className="text-xl font-bold text-black">本社所在地</h3>
                       <p className="text-sm text-gray-600">本社</p>

@@ -1,4 +1,3 @@
-import { Award, Globe, Lightbulb, Shield, Target, TrendingUp, Users } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -36,35 +35,35 @@ export default function AboutPage() {
             title: "AEGIS LLP設立",
             description: "地方自治体のDX推進を目指し、9社の専門企業が連携してLLPを設立",
             side: "right",
-            number: "０１",
+            number: "01",
         },
         {
             year: "2021",
             title: "初の大型プロジェクト受注",
             description: "A市において包括的なデジタル行政システムを構築、大幅な効率化を実現",
             side: "left",
-            number: "０２",
+            number: "02",
         },
         {
             year: "2022",
             title: "メンバー企業拡大・技術力強化",
             description: "AI・IoT専門企業2社が新たに参加、技術領域を大幅に拡充",
             side: "right",
-            number: "０３",
+            number: "03",
         },
         {
             year: "2023",
             title: "DX専門チーム発足",
             description: "自治体DX専門の技術者チームを組織化、専門性をさらに深化",
             side: "left",
-            number: "０４",
+            number: "04",
         },
         {
             year: "2024",
             title: "全国展開開始",
             description: "全国15自治体との連携協定を締結、サービス提供エリアを拡大",
             side: "right",
-            number: "０５",
+            number: "05",
         },
     ]
 
@@ -73,40 +72,36 @@ export default function AboutPage() {
             number: "50+",
             label: "完了プロジェクト",
             description: "大規模システム構築実績",
-            icon: <Target className="w-8 h-8" />,
         },
         {
             number: "99.9%",
             label: "稼働率",
             description: "システム安定性保証",
-            icon: <Shield className="w-8 h-8" />,
         },
         {
             number: "15",
             label: "自治体パートナー",
             description: "全国展開中",
-            icon: <Globe className="w-8 h-8" />,
         },
         {
             number: "92%",
             label: "顧客満足度",
             description: "継続的改善",
-            icon: <TrendingUp className="w-8 h-8" />,
         },
     ]
 
     return (
-        <div className="min-h-screen bg-background pt-20">
-            {/* Hero Section with Parallax */}
+        <div className="min-h-screen bg-white pt-20">
+            {/* Hero Section with Background Image */}
             <section className="relative h-[70vh] overflow-hidden">
                 <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(/placeholder.svg?height=800&width=1920)` }} />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50" />
+                <div className="absolute inset-0 bg-black/50" />
                 <div className="relative h-full flex items-center">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="max-w-3xl">
                             <h1 className="text-5xl md:text-7xl font-black mb-6 text-white">
                                 会社概要
-                                <span className="block text-2xl md:text-3xl mt-4 font-normal text-secondary">About AEGIS LLP</span>
+                                <span className="block text-2xl md:text-3xl mt-4 font-normal text-gray-200">About AEGIS LLP</span>
                             </h1>
                             <p className="text-xl text-gray-200 mb-8">
                                 地方自治体のデジタル変革を通じて、より良い社会の実現を目指します
@@ -155,66 +150,51 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* Company Values with Creative Cards */}
-            <section className="py-20 md:py-32 bg-white">
+            {/* Company Values - Clean Design */}
+            <section className="py-20 md:py-32 bg-gray-50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12 md:mb-20">
-                        <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">AEGIS LLPの価値観</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">AEGIS LLPの価値観</h2>
                         <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
                             私たちの活動を支える3つの核となる価値観
                         </p>
-                        <div className="w-24 h-1 mx-auto mt-6 bg-cta animate-expandWidth" />
+                        <div className="w-24 h-1 mx-auto mt-6 bg-primary" />
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
                         {[
                             {
-                                icon: <Award className="w-16 h-16" strokeWidth={1.5} />,
+                                number: "01",
                                 title: "信頼性",
                                 titleEn: "Reliability",
                                 desc: "確実な実績と継続的なサポート",
                                 details: "20年以上の経験と実績に基づく、揺るぎない信頼関係の構築",
-                                color: "bg-secondary",
-                                borderColor: "border-secondary",
                             },
                             {
-                                icon: <Lightbulb className="w-16 h-16" strokeWidth={1.5} />,
+                                number: "02",
                                 title: "革新性",
                                 titleEn: "Innovation",
                                 desc: "最新技術による課題解決",
                                 details: "AI、IoT、クラウドなど最先端技術を活用した革新的ソリューション",
-                                color: "bg-cta",
-                                borderColor: "border-cta",
                             },
                             {
-                                icon: <Users className="w-16 h-16" strokeWidth={1.5} />,
+                                number: "03",
                                 title: "連携力",
                                 titleEn: "Collaboration",
                                 desc: "9社の専門性を結集",
                                 details: "各分野のエキスパートが連携し、包括的な価値を提供",
-                                color: "bg-primary",
-                                borderColor: "border-primary",
                             },
                         ].map((value, index) => (
                             <div
                                 key={index}
-                                className="group relative overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+                                className="bg-white border border-gray-200 overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
                             >
-                                <div className="relative h-64">
-                                    <div className={`absolute inset-0 ${value.color} opacity-10`} />
-                                    <div className="absolute top-6 left-6">
-                                        <div className={`w-20 h-20 ${value.color} flex items-center justify-center text-white transition-transform duration-300 group-hover:scale-110`}>
-                                            {value.icon}
-                                        </div>
-                                    </div>
-                                    <div className="absolute bottom-6 left-6 right-6">
-                                        <h3 className="text-2xl font-bold text-gray-800 mb-2">{value.title}</h3>
-                                        <p className="text-sm text-gray-600">{value.titleEn}</p>
-                                    </div>
-                                </div>
-                                <div className={`p-8 bg-white border-t-4 ${value.borderColor}`}>
-                                    <p className="text-gray-600 font-medium mb-3">{value.desc}</p>
-                                    <p className="text-sm text-gray-500 leading-relaxed">{value.details}</p>
+                                <div className="p-8">
+                                    <div className="text-5xl font-black text-gray-200 mb-4">{value.number}</div>
+                                    <h3 className="text-2xl font-bold text-black mb-2">{value.title}</h3>
+                                    <p className="text-sm text-gray-500 mb-4">{value.titleEn}</p>
+                                    <p className="text-gray-700 font-medium mb-3">{value.desc}</p>
+                                    <p className="text-sm text-gray-600 leading-relaxed">{value.details}</p>
                                 </div>
                             </div>
                         ))}
@@ -222,67 +202,55 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* Achievement Stats Section */}
-            <section className="py-20 bg-gradient-to-r from-primary to-secondary text-white">
+            {/* Achievement Stats Section - Clean Design */}
+            <section className="py-20 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                         {achievements.map((stat, index) => (
-                            <div key={index} className="text-center group">
-                                <div className="w-20 h-20 bg-white/20 backdrop-blur-sm flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                                    <div className="text-white">{stat.icon}</div>
-                                </div>
-                                <div className="text-4xl md:text-5xl font-bold mb-2 gradient-text-animated animate-shimmer">
+                            <div key={index} className="text-center">
+                                <div className="text-4xl md:text-5xl font-bold mb-2 text-primary">
                                     {stat.number}
                                 </div>
-                                <div className="text-lg font-medium mb-1">{stat.label}</div>
-                                <div className="text-sm text-white/70">{stat.description}</div>
+                                <div className="text-lg font-medium mb-1 text-black">{stat.label}</div>
+                                <div className="text-sm text-gray-600">{stat.description}</div>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* Enhanced Timeline Section */}
-            <section className="py-20 md:py-32 bg-gray-50 relative overflow-hidden">
-                <div className="absolute -top-48 -right-48 w-96 h-96 rounded-full bg-gradient-radial from-primary/5 to-transparent animate-float"></div>
-                <div className="absolute -bottom-48 -left-48 w-96 h-96 rounded-full bg-gradient-radial from-secondary/5 to-transparent animate-float" style={{ animationDirection: "reverse" }}></div>
-
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            {/* Timeline Section - Clean Design */}
+            <section className="py-20 md:py-32 bg-gray-50">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12 md:mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">会社の歩み</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">会社の歩み</h2>
                         <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
                             AEGIS LLPの設立から現在までの主要なマイルストーン
                         </p>
-                        <div className="w-24 h-1 mx-auto mt-6 bg-gradient-to-r from-primary to-secondary" />
+                        <div className="w-24 h-1 mx-auto mt-6 bg-primary" />
                     </div>
 
                     <div className="relative max-w-6xl mx-auto">
                         <div className="relative">
                             {/* Timeline Line */}
-                            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary via-secondary to-cta" />
+                            <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gray-300" />
                             <div className="space-y-24 md:space-y-32">
                                 {timelineEvents.map((item, index) => (
                                     <div key={index} className={`flex items-center ${item.side === "left" ? "flex-row-reverse" : ""}`}>
                                         {/* Timeline Marker */}
-                                        <div className="absolute left-1/2 transform -translate-x-1/2 w-20 h-20 border-4 border-white shadow-xl z-10 flex items-center justify-center bg-gradient-to-br from-primary to-secondary group hover:scale-110 transition-transform duration-300">
-                                            <div className="text-white font-bold text-xl jp-numbers">{item.number}</div>
+                                        <div className="absolute left-1/2 transform -translate-x-1/2 w-16 h-16 border-4 border-white shadow-md z-10 flex items-center justify-center bg-primary">
+                                            <div className="text-white font-bold text-lg">{item.number}</div>
                                         </div>
                                         {/* Content Block */}
                                         <div
                                             className={`w-full md:w-5/12 ${item.side === "left" ? "text-right pr-8 md:pr-16" : "pl-8 md:pl-16"}`}
                                         >
-                                            <div
-                                                className={`p-6 md:p-8 shadow-xl group hover:shadow-2xl transition-all duration-300 relative bg-white border-l-8 hover:-translate-y-2 ${item.side === "left" ? "border-r-8 border-l-0 border-secondary" : "border-primary"
-                                                    }`}
-                                            >
-                                                <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-primary/10 to-secondary/10 -z-10"></div>
-                                                <div className="text-primary">
-                                                    <div className="text-5xl md:text-6xl font-black mb-4 opacity-90 gradient-text">
-                                                        {item.year}
-                                                    </div>
-                                                    <h4 className="text-xl md:text-2xl font-bold mb-4">{item.title}</h4>
-                                                    <p className="leading-relaxed opacity-90 text-gray-700">{item.description}</p>
+                                            <div className="p-6 md:p-8 shadow-md bg-white border border-gray-200">
+                                                <div className="text-4xl md:text-5xl font-black mb-4 text-gray-200">
+                                                    {item.year}
                                                 </div>
+                                                <h4 className="text-xl md:text-2xl font-bold mb-4 text-black">{item.title}</h4>
+                                                <p className="leading-relaxed text-gray-700">{item.description}</p>
                                             </div>
                                         </div>
                                         {/* Empty space for opposite side */}
@@ -295,12 +263,12 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* Purpose Section - Similar to construction site */}
-            <section className="bg-gradient-to-br from-primary to-secondary py-32 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-radial from-white/10 to-transparent rounded-full w-full h-full animate-rotate-slow"></div>
+            {/* Purpose Section - Clean Design */}
+            <section className="bg-white py-32 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-50/50 to-transparent"></div>
                 <div className="max-w-6xl mx-auto px-5 flex flex-col lg:flex-row items-center gap-20 relative z-10">
                     <div className="flex-1">
-                        <h2 className="text-4xl md:text-5xl font-black mb-10 leading-tight text-white drop-shadow-lg">
+                        <h2 className="text-4xl md:text-5xl font-black mb-10 leading-tight text-black">
                             目指すのは、
                             <br />
                             「皆が安心して
@@ -309,7 +277,7 @@ export default function AboutPage() {
                             <br />
                             まちの創造」
                         </h2>
-                        <p className="text-white/90 text-lg leading-loose mb-10">
+                        <p className="text-gray-700 text-lg leading-loose mb-10">
                             私たちは、デジタル技術の力を通じて、すべての人が安心して暮らせる社会の実現を目指しています。
                             <br />
                             <br />
@@ -317,50 +285,49 @@ export default function AboutPage() {
                         </p>
                         <Link
                             href="/services"
-                            className="inline-flex items-center gap-2 bg-white text-primary font-extrabold text-lg px-8 py-3 hover:bg-white/90 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300"
+                            className="inline-flex items-center gap-2 bg-primary text-white font-extrabold text-lg px-8 py-3 hover:bg-primary/90 transition-all duration-300"
                         >
                             AEGIS LLPの強みへ
                             <span className="ml-2">→</span>
                         </Link>
                     </div>
-                    <div className="flex-1 grid grid-cols-2 gap-8 transform rotate-3 hover:rotate-0 transition-transform duration-500">
-                        <div className="relative h-56">
+                    <div className="flex-1 grid grid-cols-2 gap-8">
+                        <div className="relative h-56 transform rotate-3 hover:rotate-0 transition-transform duration-500">
                             <Image
                                 src="/placeholder.svg?height=200&width=300"
                                 alt="デジタル社会の実現1"
                                 fill
-                                className="object-cover shadow-2xl transform -translate-x-2 -translate-y-2 hover:translate-x-0 hover:translate-y-0 hover:scale-105 transition-all duration-500"
+                                className="object-cover shadow-xl border border-gray-200"
                             />
                         </div>
-                        <div className="relative h-56">
+                        <div className="relative h-56 mt-8 transform -rotate-2 hover:rotate-0 transition-transform duration-500">
                             <Image
                                 src="/placeholder.svg?height=200&width=300"
                                 alt="デジタル社会の実現2"
                                 fill
-                                className="object-cover shadow-2xl transform translate-x-2 translate-y-2 hover:translate-x-0 hover:translate-y-0 hover:scale-105 transition-all duration-500"
+                                className="object-cover shadow-xl border border-gray-200"
                             />
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Enhanced Company Information Table */}
-            <section className="py-20 md:py-32 bg-white">
+            {/* Company Information Table - Clean Design */}
+            <section className="py-20 md:py-32 bg-gray-50">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12 md:mb-20">
-                        <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">会社概要</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">会社概要</h2>
                         <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">AEGIS LLPの基本情報</p>
-                        <div className="w-24 h-1 mx-auto mt-6 bg-gradient-to-r from-primary to-secondary" />
+                        <div className="w-24 h-1 mx-auto mt-6 bg-primary" />
                     </div>
 
-                    <div className="bg-white border-2 border-secondary shadow-2xl overflow-hidden">
-                        <div className="bg-gradient-to-r from-primary to-secondary h-2"></div>
+                    <div className="bg-white border border-gray-200 shadow-md overflow-hidden">
                         <table className="w-full">
                             <tbody>
                                 {companyInfo.map((row, index) => (
-                                    <tr key={index} className={`group hover:bg-blue-50 transition-colors duration-200 ${index % 2 === 0 ? "bg-white" : "bg-gray-50"}`}>
+                                    <tr key={index} className={`hover:bg-gray-50 transition-colors duration-200 ${index % 2 === 0 ? "bg-white" : "bg-gray-50"}`}>
                                         <td className="px-6 py-6 md:px-8 md:py-8 border-b border-gray-200 w-1/3">
-                                            <div className="font-bold text-lg mb-1 text-primary group-hover:text-secondary transition-colors duration-200">
+                                            <div className="font-bold text-lg mb-1 text-black">
                                                 {row.label}
                                             </div>
                                             <div className="text-sm text-gray-500">{row.labelEn}</div>
@@ -381,7 +348,7 @@ export default function AboutPage() {
                         </p>
                         <Link
                             href="/contact"
-                            className="inline-block bg-cta text-white font-bold px-12 py-4 text-lg hover:bg-primary hover:shadow-xl transition-all duration-300 transform hover:scale-105 liquid-button relative overflow-hidden"
+                            className="inline-block bg-primary text-white font-bold px-12 py-4 text-lg hover:bg-primary/90 transition-all duration-300"
                         >
                             お問い合わせはこちら →
                         </Link>
