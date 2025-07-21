@@ -2,10 +2,18 @@
 
 import {
   ArrowRight,
+  Award,
+  BarChart3,
+  Brain,
   Building2,
   CheckCircle,
   ChevronLeft,
   ChevronRight,
+  Cloud,
+  Layers,
+  Lightbulb,
+  Network,
+  Shield,
   Users
 } from "lucide-react"
 import Image from "next/image"
@@ -21,6 +29,7 @@ export default function AegisHomepage() {
   const [currentWorksSlide, setCurrentWorksSlide] = useState(0)
   const [scrollY, setScrollY] = useState(0)
   const [showScrollTop, setShowScrollTop] = useState(false)
+  const [selectedCompany, setSelectedCompany] = useState(0)
 
   // Parallax scroll effect
   useEffect(() => {
@@ -129,6 +138,188 @@ export default function AegisHomepage() {
     },
   }
 
+  const memberCompanies = [
+    {
+      id: "01",
+      name: "株式会社デジタルソリューションズ",
+      nameEn: "Digital Solutions Inc.",
+      description:
+        "AI・機械学習を活用したデータ分析、予測モデル構築、自動化ソリューションを提供。自治体の業務効率化と意思決定支援を強力に推進します。",
+      expertise: "AI・データ分析",
+      category: "技術",
+      established: "2015年",
+      employees: "50名",
+      projects: "25件",
+      specialties: ["自然言語処理", "画像認識", "予測分析", "業務自動化"],
+      achievements: [
+        "市民問い合わせ対応時間を80%削減",
+        "行政文書処理の自動化率95%達成",
+        "AI予測モデルによる政策効果向上"
+      ],
+      image: "/placeholder.svg?height=400&width=600",
+      icon: <Brain className="w-6 h-6" strokeWidth={1.5} />,
+    },
+    {
+      id: "02",
+      name: "スマートインフラテック株式会社",
+      nameEn: "Smart InfraTech Co., Ltd.",
+      description:
+        "IoTセンサーネットワークの設計・構築・運用。スマートシティ構想におけるインフラのデジタル化を支援し、都市の持続可能性を高めます。",
+      expertise: "IoT・スマートシティ",
+      category: "インフラ",
+      established: "2016年",
+      employees: "35名",
+      projects: "30件",
+      specialties: ["センサーネットワーク", "データ収集基盤", "リアルタイム監視", "予防保全"],
+      achievements: [
+        "10,000台以上のIoTセンサー導入",
+        "インフラ保守コスト30%削減",
+        "災害予測精度90%以上"
+      ],
+      image: "/placeholder.svg?height=400&width=600",
+      icon: <Network className="w-6 h-6" strokeWidth={1.5} />,
+    },
+    {
+      id: "03",
+      name: "クラウドコネクト株式会社",
+      nameEn: "Cloud Connect Corporation",
+      description:
+        "クラウドプラットフォームの導入・移行・最適化。セキュアでスケーラブルなクラウド環境を構築し、自治体システムの柔軟性を向上させます。",
+      expertise: "クラウドインフラ",
+      category: "技術",
+      established: "2014年",
+      employees: "45名",
+      projects: "40件",
+      specialties: ["AWS", "Azure", "Google Cloud", "ハイブリッドクラウド"],
+      achievements: [
+        "99.99%の稼働率保証",
+        "システム運用コスト40%削減",
+        "災害復旧時間を1/10に短縮"
+      ],
+      image: "/placeholder.svg?height=400&width=600",
+      icon: <Cloud className="w-6 h-6" strokeWidth={1.5} />,
+    },
+    {
+      id: "04",
+      name: "株式会社セキュリティガード",
+      nameEn: "Security Guard Inc.",
+      description:
+        "サイバーセキュリティ対策のコンサルティングからシステム導入、24時間監視まで一貫したサービスを提供。自治体の情報資産を強固に守ります。",
+      expertise: "サイバーセキュリティ",
+      category: "セキュリティ",
+      established: "2013年",
+      employees: "60名",
+      projects: "50件",
+      specialties: ["脅威検知", "インシデント対応", "セキュリティ監査", "職員教育"],
+      achievements: [
+        "重大インシデント0件継続中",
+        "24時間365日監視体制",
+        "セキュリティ認証100%取得支援"
+      ],
+      image: "/placeholder.svg?height=400&width=600",
+      icon: <Shield className="w-6 h-6" strokeWidth={1.5} />,
+    },
+    {
+      id: "05",
+      name: "地域DX推進機構",
+      nameEn: "Regional DX Promotion Organization",
+      description:
+        "地域に特化したデジタル変革のコンサルティング。住民サービスの向上、地域経済の活性化に向けた戦略立案と実行をサポートします。",
+      expertise: "地域コンサルティング",
+      category: "コンサルティング",
+      established: "2017年",
+      employees: "30名",
+      projects: "35件",
+      specialties: ["地域戦略立案", "住民サービス設計", "地域経済分析", "官民連携"],
+      achievements: [
+        "住民満足度平均20%向上",
+        "地域経済効果100億円創出",
+        "DX推進自治体15団体支援"
+      ],
+      image: "/placeholder.svg?height=400&width=600",
+      icon: <Users className="w-6 h-6" strokeWidth={1.5} />,
+    },
+    {
+      id: "06",
+      name: "株式会社データビジョン",
+      nameEn: "Data Vision Co., Ltd.",
+      description:
+        "ビッグデータの収集・分析・可視化ソリューション。複雑なデータを分かりやすく提示し、自治体のデータ駆動型意思決定を支援します。",
+      expertise: "データ可視化",
+      category: "技術",
+      established: "2015年",
+      employees: "40名",
+      projects: "45件",
+      specialties: ["BI開発", "ダッシュボード設計", "データ統合", "レポート自動化"],
+      achievements: [
+        "意思決定速度5倍向上",
+        "データ活用率90%達成",
+        "リアルタイムダッシュボード50件構築"
+      ],
+      image: "/placeholder.svg?height=400&width=600",
+      icon: <BarChart3 className="w-6 h-6" strokeWidth={1.5} />,
+    },
+    {
+      id: "07",
+      name: "次世代システム開発合同会社",
+      nameEn: "Next Generation Systems LLC",
+      description:
+        "最新技術を用いたシステム開発。レガシーシステムのモダナイゼーションや、新たな行政サービスのシステム構築を担います。",
+      expertise: "システム開発",
+      category: "技術",
+      established: "2016年",
+      employees: "55名",
+      projects: "60件",
+      specialties: ["アジャイル開発", "マイクロサービス", "API設計", "UI/UX"],
+      achievements: [
+        "開発期間平均50%短縮",
+        "システム満足度95%以上",
+        "モダナイゼーション20件完了"
+      ],
+      image: "/placeholder.svg?height=400&width=600",
+      icon: <Lightbulb className="w-6 h-6" strokeWidth={1.5} />,
+    },
+    {
+      id: "08",
+      name: "株式会社インフラマネジメント",
+      nameEn: "Infrastructure Management Inc.",
+      description:
+        "公共インフラの老朽化対策、維持管理のデジタル化。ドローンやAIを活用した点検・診断システムで、効率的なインフラ管理を実現します。",
+      expertise: "インフラ管理",
+      category: "インフラ",
+      established: "2014年",
+      employees: "45名",
+      projects: "55件",
+      specialties: ["ドローン点検", "AI診断", "予防保全", "アセットマネジメント"],
+      achievements: [
+        "点検コスト60%削減",
+        "インフラ寿命20%延長",
+        "事故予防率99%達成"
+      ],
+      image: "/placeholder.svg?height=400&width=600",
+      icon: <Building2 className="w-6 h-6" strokeWidth={1.5} />,
+    },
+    {
+      id: "09",
+      name: "教育DXパートナーズ",
+      nameEn: "Education DX Partners",
+      description:
+        "教育分野におけるデジタル変革を支援。オンライン学習プラットフォームの導入や、教育データの活用により、質の高い教育環境を構築します。",
+      expertise: "教育DX",
+      category: "教育",
+      established: "2018年",
+      employees: "25名",
+      projects: "20件",
+      specialties: ["eラーニング", "学習分析", "個別最適化", "教員支援"],
+      achievements: [
+        "学習効果30%向上",
+        "教員負担40%軽減",
+        "オンライン授業満足度85%"
+      ],
+      image: "/placeholder.svg?height=400&width=600",
+      icon: <Award className="w-6 h-6" strokeWidth={1.5} />,
+    },
+  ]
   const successStories = [
     {
       title: "A市デジタル化プロジェクト",
@@ -199,16 +390,28 @@ export default function AegisHomepage() {
   ]
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white pt-20">
       <style jsx>{`
         .vertical-text {
           writing-mode: vertical-rl;
           text-orientation: mixed;
           letter-spacing: 0.1em;
         }
+        
+        .jp-heading {
+          font-feature-settings: "palt";
+          letter-spacing: -0.02em;
+          line-height: 1.2;
+        }
+
+        .jp-body-text {
+          font-feature-settings: "palt";
+          line-height: 1.8;
+          letter-spacing: 0.04em;
+        }
       `}</style>
 
-      {/* Hero Carousel with Parallax */}
+      {/* Hero Carousel with Balanced Layout */}
       <section id="home" className="relative h-screen overflow-hidden">
         {content.heroSlides.map((slide, index) => (
           <div
@@ -216,7 +419,7 @@ export default function AegisHomepage() {
             className={`absolute inset-0 transition-opacity duration-1000 ${index === currentHeroSlide ? "opacity-100" : "opacity-0"
               }`}
           >
-            {/* Parallax Background */}
+            {/* Background */}
             <div
               className="absolute inset-0 bg-cover bg-center"
               style={{
@@ -224,39 +427,23 @@ export default function AegisHomepage() {
                 transform: `translateY(${scrollY * 0.5}px)`,
               }}
             />
-            {/* Subtle Geometric Overlay Shapes */}
-            <div className="absolute inset-0">
-              <div
-                className="absolute top-20 right-20 w-32 h-32 bg-white/5 animate-float"
-                style={{
-                  transform: `translateY(${scrollY * 0.3}px) rotate(45deg)`,
-                }}
-              />
-              <div
-                className="absolute bottom-40 left-40 w-24 h-24 bg-white/5 animate-pulse-slow"
-                style={{
-                  transform: `translateY(${scrollY * 0.7}px)`,
-                }}
-              />
-            </div>
-            <div className="absolute inset-0 bg-black/50" />
+
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
+
             <div className="relative h-full flex items-center">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Hero Content - Text Only */}
-                <div
-                  className="max-w-4xl"
-                  style={{
-                    transform: `translateY(${scrollY * 0.1}px)`,
-                  }}
-                >
-                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-white whitespace-pre-line leading-tight">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div className="max-w-3xl">
+                  <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white leading-tight jp-heading">
                     {slide.headline}
                   </h1>
-                  <p className="text-xl md:text-2xl mb-10 text-gray-100 leading-relaxed">{slide.subline}</p>
+                  <p className="text-xl md:text-2xl mb-10 text-gray-100 jp-body-text">
+                    {slide.subline}
+                  </p>
                   <div className="space-y-4">
                     <Link
                       href="#contact"
-                      className="inline-block bg-white text-primary font-bold px-8 md:px-10 py-4 md:py-5 text-lg md:text-xl hover:bg-gray-100 transition-all duration-300"
+                      className="inline-block bg-primary text-white font-bold px-10 py-4 text-lg hover:bg-primary/90 transition-all duration-300"
                     >
                       {slide.cta}
                     </Link>
@@ -267,28 +454,29 @@ export default function AegisHomepage() {
             </div>
           </div>
         ))}
-        {/* Carousel Dots */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
+
+        {/* Navigation dots */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3">
           {content.heroSlides.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentHeroSlide(index)}
-              className={`w-3 h-3 transition-all duration-300 ${index === currentHeroSlide ? "bg-white w-8" : "bg-white/50"
+              className={`h-2 transition-all duration-300 ${index === currentHeroSlide ? "w-8 bg-white" : "w-2 bg-white/50"
                 }`}
             />
           ))}
         </div>
       </section>
 
-      {/* Works Section - Horizontal Carousel with Vertical Text */}
-      <section className="py-20 bg-white">
+      {/* Works Section - Refined Layout */}
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Title */}
-          <div className="mb-12">
-            <h2 className="text-4xl md:text-5xl font-black text-black mb-2">
+          <div className="mb-16 text-center">
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-4 jp-heading">
               施工実績
             </h2>
-            <div className="w-24 h-1 bg-primary"></div>
+            <div className="w-24 h-1 bg-primary mx-auto"></div>
           </div>
 
           {/* Carousel Container */}
@@ -302,27 +490,27 @@ export default function AegisHomepage() {
                   <div key={index} className="w-full flex-shrink-0 px-4">
                     <div className="max-w-6xl mx-auto h-full">
                       <div className="bg-white overflow-hidden shadow-2xl h-full flex">
-                        {/* Left Side - Image (Taking more space) */}
-                        <div className="relative w-2/3">
+                        {/* Left Side - Image */}
+                        <div className="relative w-3/5">
                           <Image
                             src={work.image}
                             alt={work.title}
                             fill
                             className="object-cover"
                           />
-                          {/* Overlay with Date */}
-                          <div className="absolute top-8 left-8 bg-white/90 backdrop-blur-sm px-6 py-3">
+                          {/* Date overlay */}
+                          <div className="absolute top-8 left-8 bg-white px-6 py-3">
                             <p className="text-sm font-bold text-gray-700">
                               {work.date}
                             </p>
                           </div>
                         </div>
 
-                        {/* Right Side - Content with Vertical Text */}
-                        <div className="w-1/3 p-8 lg:p-12 bg-gray-50 flex flex-col justify-between">
-                          {/* Vertical Title */}
-                          <div className="flex-1 flex items-center justify-center">
-                            <h3 className="text-3xl lg:text-4xl font-black text-black vertical-text">
+                        {/* Right Side - Content */}
+                        <div className="w-2/5 p-8 lg:p-12 bg-gray-50 flex flex-col justify-between">
+                          {/* Title */}
+                          <div className="mb-8">
+                            <h3 className="text-2xl lg:text-3xl font-bold text-black jp-heading">
                               {work.title}
                             </h3>
                           </div>
@@ -330,8 +518,8 @@ export default function AegisHomepage() {
                           {/* Tags and Location */}
                           <div className="space-y-6">
                             {/* Tags */}
-                            <div className="space-y-3">
-                              <p className="text-sm font-bold text-gray-500">施工内容</p>
+                            <div>
+                              <p className="text-sm font-bold text-gray-500 mb-3">施工内容</p>
                               <div className="flex flex-wrap gap-2">
                                 {work.tags.map((tag, tagIndex) => (
                                   <span
@@ -345,8 +533,8 @@ export default function AegisHomepage() {
                             </div>
 
                             {/* Location */}
-                            <div className="space-y-3">
-                              <p className="text-sm font-bold text-gray-500">施工場所</p>
+                            <div>
+                              <p className="text-sm font-bold text-gray-500 mb-3">施工場所</p>
                               <div className="flex gap-2">
                                 {work.location.map((loc, locIndex) => (
                                   <span
@@ -389,9 +577,9 @@ export default function AegisHomepage() {
                 <button
                   key={index}
                   onClick={() => setCurrentWorksSlide(index)}
-                  className={`transition-all duration-300 ${index === currentWorksSlide
-                    ? "w-16 h-3 bg-primary"
-                    : "w-3 h-3 bg-gray-300 hover:bg-gray-400"
+                  className={`h-2 transition-all duration-300 ${index === currentWorksSlide
+                    ? "w-8 bg-primary"
+                    : "w-2 bg-gray-300 hover:bg-gray-400"
                     }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
@@ -399,82 +587,77 @@ export default function AegisHomepage() {
             </div>
           </div>
 
-          {/* Additional Info */}
+          {/* CTA */}
           <div className="mt-12 text-center">
-            <p className="text-gray-600 mb-4">
+            <p className="text-gray-600 mb-6">
               20年以上の実績と信頼で、安全・安心な施工をお約束します
             </p>
-            <button className="text-primary font-bold hover:underline">
-              全ての施工実績を見る →
-            </button>
+            <Link
+              href="/works"
+              className="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all duration-300"
+            >
+              全ての施工実績を見る
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Board Message - Enhanced with more content */}
-      <section className="py-20 md:py-32 bg-gray-50">
+      {/* Board Message - Balanced Layout */}
+      <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 md:mb-20">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-black">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6 text-black jp-heading">
               {content.boardMessage.title}
             </h2>
             <div className="w-24 h-1 mx-auto bg-primary" />
           </div>
-          <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
-              <div className="absolute -left-4 md:-left-8 top-0 text-4xl md:text-6xl font-bold opacity-5 text-gray-900">
-                理念
-              </div>
               <div className="relative aspect-[5/4] w-full">
                 <Image
                   src="/placeholder.svg?height=400&width=500"
                   alt="Board Chairman"
                   fill
-                  className="object-cover border border-gray-200"
+                  className="object-cover"
                 />
               </div>
-              {/* Additional visual element */}
               <div className="mt-6 p-6 bg-white border-l-4 border-primary">
                 <h4 className="font-bold text-lg mb-2 text-black">経営理念</h4>
-                <p className="text-gray-600">
+                <p className="text-gray-600 jp-body-text">
                   技術革新を通じて、すべての地域住民が安心して暮らせる社会インフラの構築を目指します。
                 </p>
               </div>
             </div>
-            <div className="space-y-6 md:space-y-8">
-              <blockquote className="text-xl md:text-2xl leading-relaxed border-l-4 border-primary pl-6 md:pl-8 text-gray-700">
+
+            <div className="space-y-8">
+              <blockquote className="text-2xl leading-relaxed border-l-4 border-primary pl-8 text-gray-700 jp-body-text">
                 "{content.boardMessage.quote}"
               </blockquote>
-              <div className="space-y-2">
+
+              <div>
                 <p className="font-bold text-xl text-black">{content.boardMessage.name}</p>
-                <p className="text-lg text-gray-600">{content.boardMessage.position}</p>
+                <p className="text-gray-600">{content.boardMessage.position}</p>
               </div>
-              <p className="text-base md:text-lg leading-relaxed text-gray-600">
+
+              <p className="text-gray-600 leading-relaxed jp-body-text">
                 {content.boardMessage.description}
               </p>
 
-              {/* Additional content */}
               <div className="space-y-4 pt-6">
                 <h4 className="font-bold text-lg text-black">私たちの約束</h4>
                 <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <span className="block w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span className="text-gray-600">
-                      最新技術の継続的な研究開発により、常に最適なソリューションを提供します
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="block w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span className="text-gray-600">
-                      地域の特性を深く理解し、カスタマイズされた支援を実現します
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="block w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span className="text-gray-600">
-                      長期的なパートナーシップを通じて、持続可能な成長を支援します
-                    </span>
-                  </li>
+                  {[
+                    "最新技術の継続的な研究開発により、常に最適なソリューションを提供します",
+                    "地域の特性を深く理解し、カスタマイズされた支援を実現します",
+                    "長期的なパートナーシップを通じて、持続可能な成長を支援します"
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <span className="block w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span className="text-gray-600">{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -482,20 +665,18 @@ export default function AegisHomepage() {
         </div>
       </section>
 
-      {/* Services Overview with Enhanced Design - Visual Cards */}
-      <section id="services" className="py-20 bg-white">
+      {/* Services Overview - Structured Grid */}
+      <section id="services" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">{content.services.title}</h2>
-            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">{content.services.subtitle}</p>
-            <p className="text-base text-gray-500 mt-4 max-w-2xl mx-auto">
-              自治体の規模や課題に応じて、最適なデジタルソリューションを組み合わせ、段階的な導入計画から運用サポートまで一貫して支援いたします。
-            </p>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4 text-black jp-heading">{content.services.title}</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto jp-body-text">{content.services.subtitle}</p>
           </div>
-          <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
+
+          <div className="grid lg:grid-cols-2 gap-8">
             {/* Main Service Card */}
-            <div className="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 group relative border border-gray-100">
-              <div className="absolute top-0 left-0 w-full h-1 bg-primary" />
+            <div className="bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 group border border-gray-100">
+              <div className="h-1 w-full bg-primary" />
               <div className="relative">
                 <div className="relative aspect-[4/3] w-full">
                   <Image
@@ -504,45 +685,44 @@ export default function AegisHomepage() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  {/* Visual overlay with stats */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent">
                     <div className="absolute bottom-6 left-6 right-6 text-white">
-                      <div className="text-5xl font-black mb-2">01</div>
+                      <div className="text-5xl font-bold mb-2">01</div>
                       <h3 className="text-2xl font-bold">デジタル変革支援</h3>
                     </div>
                   </div>
                 </div>
                 <div className="p-8">
-                  <p className="text-gray-600 mb-6 leading-relaxed">
+                  <p className="text-gray-600 mb-6 leading-relaxed jp-body-text">
                     最新のAI技術とクラウドインフラを活用し、行政サービスの効率化と市民満足度の向上を実現します。
-                    既存システムとの連携を考慮した段階的な移行計画により、リスクを最小限に抑えながら確実な成果を提供します。
                   </p>
                   <div className="space-y-4 mb-6">
-                    <div className="flex justify-between items-center p-4 bg-gray-50">
-                      <span className="text-gray-700">業務効率化</span>
-                      <span className="font-bold text-2xl text-black">50%向上</span>
-                    </div>
-                    <div className="flex justify-between items-center p-4 bg-gray-50">
-                      <span className="text-gray-700">処理時間短縮</span>
-                      <span className="font-bold text-2xl text-black">80%削減</span>
-                    </div>
-                    <div className="flex justify-between items-center p-4 bg-gray-50">
-                      <span className="text-gray-700">市民満足度</span>
-                      <span className="font-bold text-2xl text-black">92%達成</span>
-                    </div>
+                    {[
+                      { label: "業務効率化", value: "50%向上" },
+                      { label: "処理時間短縮", value: "80%削減" },
+                      { label: "市民満足度", value: "92%達成" }
+                    ].map((stat, idx) => (
+                      <div key={idx} className="flex justify-between items-center p-4 bg-gray-50">
+                        <span className="text-gray-700">{stat.label}</span>
+                        <span className="font-bold text-2xl text-black">{stat.value}</span>
+                      </div>
+                    ))}
                   </div>
-                  <button className="w-full bg-primary text-white font-medium py-3 hover:bg-primary/90 transition-colors">
+                  <Link
+                    href="/services"
+                    className="block w-full bg-primary text-white font-medium py-3 text-center hover:bg-primary/90 transition-colors"
+                  >
                     詳細を見る →
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
 
-            {/* Secondary Services Grid */}
+            {/* Secondary Services */}
             <div className="space-y-6">
               <div className="bg-gray-50 p-6">
                 <h3 className="text-xl font-bold mb-4 text-black">包括的なサービスラインナップ</h3>
-                <p className="text-gray-600 mb-6">
+                <p className="text-gray-600">
                   9社の専門企業が連携し、自治体のあらゆるニーズに対応する総合的なソリューションを提供します。
                 </p>
               </div>
@@ -551,21 +731,21 @@ export default function AegisHomepage() {
                 {
                   number: "02",
                   title: "スマートシティ構築",
-                  description: "IoTセンサーとビッグデータ分析により、都市インフラの最適化と住民サービスの向上を実現。エネルギー管理、交通流動、防災システムを統合的に管理します。",
+                  description: "IoTセンサーとビッグデータ分析により、都市インフラの最適化と住民サービスの向上を実現。",
                   metric: "15都市導入",
                   result: "運営コスト25%削減",
                 },
                 {
                   number: "03",
                   title: "システム統合・最適化",
-                  description: "分散した行政システムを統合し、データの一元管理と業務プロセスの標準化を推進。レガシーシステムの現代化により、将来的な拡張性も確保します。",
+                  description: "分散した行政システムを統合し、データの一元管理と業務プロセスの標準化を推進。",
                   metric: "統合実績50+",
                   result: "メンテナンスコスト30%削減",
                 },
                 {
                   number: "04",
                   title: "セキュリティ・コンプライアンス",
-                  description: "最新のサイバーセキュリティ技術と24時間365日の監視体制により、重要な行政データを保護。定期的な脆弱性診断と職員研修も実施します。",
+                  description: "最新のサイバーセキュリティ技術と24時間365日の監視体制により、重要な行政データを保護。",
                   metric: "稼働率99.9%",
                   result: "インシデント0件達成",
                 },
@@ -576,7 +756,7 @@ export default function AegisHomepage() {
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div>
-                      <div className="text-3xl font-black text-gray-200 mb-2">{service.number}</div>
+                      <div className="text-3xl font-bold text-gray-200 mb-2">{service.number}</div>
                       <h3 className="text-xl font-bold text-black">{service.title}</h3>
                     </div>
                     <div className="text-right">
@@ -595,80 +775,80 @@ export default function AegisHomepage() {
       </section>
 
       {/* Purpose Section */}
-      <section className="bg-white py-32 relative overflow-hidden">
+      <section className="py-24 bg-white relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-50/50 to-transparent"></div>
-        <div className="max-w-6xl mx-auto px-5 flex flex-col lg:flex-row items-center gap-20 relative z-10">
-          <div className="flex-1">
-            <h2 className="text-4xl md:text-5xl font-black mb-10 leading-tight text-black">
-              目指すのは、<br />「皆が安心して<br />住める<br />まちの創造」
-            </h2>
-            <p className="text-gray-700 text-lg leading-loose mb-10">
-              誰もが安心して日々の生活を送るために欠かせない交通安全。<br /><br />
-              私たちは2000年の創業から20年以上にわたり、交通安全事業に特化したプロフェッショナル集団として「皆が安心して住めるまちの創造」に取り組んでいます。
-            </p>
-            <Link
-              href="#"
-              className="inline-flex items-center gap-2 bg-primary text-white font-extrabold text-lg px-8 py-3 hover:bg-primary/90 transition-all duration-300"
-            >
-              サンケイの強みへ
-              <span className="ml-2">→</span>
-            </Link>
-          </div>
-          <div className="flex-1 grid grid-cols-2 gap-8">
-            <div className="relative h-64 transform rotate-3 hover:rotate-0 transition-transform duration-500">
-              <Image
-                src="/placeholder.svg?height=250&width=350"
-                alt="安全な街づくり1"
-                fill
-                className="object-cover shadow-xl border border-gray-200"
-              />
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-10 leading-tight text-black jp-heading">
+                目指すのは、<br />
+                「皆が安心して<br />
+                住める<br />
+                まちの創造」
+              </h2>
+              <p className="text-gray-700 text-lg leading-loose mb-10 jp-body-text">
+                誰もが安心して日々の生活を送るために欠かせない交通安全。<br /><br />
+                私たちは2000年の創業から20年以上にわたり、交通安全事業に特化したプロフェッショナル集団として「皆が安心して住めるまちの創造」に取り組んでいます。
+              </p>
+              <Link
+                href="/about"
+                className="inline-flex items-center gap-2 bg-primary text-white font-bold text-lg px-8 py-3 hover:bg-primary/90 transition-all duration-300"
+              >
+                AEGIS LLPの強みへ
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
-            <div className="relative h-48 mt-8 transform -rotate-2 hover:rotate-0 transition-transform duration-500">
-              <Image
-                src="/placeholder.svg?height=200&width=300"
-                alt="安全な街づくり2"
-                fill
-                className="object-cover shadow-xl border border-gray-200"
-              />
+            <div className="grid grid-cols-2 gap-6">
+              <div className="relative h-64">
+                <Image
+                  src="/placeholder.svg?height=250&width=350"
+                  alt="安全な街づくり1"
+                  fill
+                  className="object-cover shadow-lg"
+                />
+              </div>
+              <div className="relative h-48 mt-8">
+                <Image
+                  src="/placeholder.svg?height=200&width=300"
+                  alt="安全な街づくり2"
+                  fill
+                  className="object-cover shadow-lg"
+                />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Why Choose AEGIS - Horizontal Moving Carousel */}
-      <section className="py-20 md:py-32 bg-gray-50">
+      {/* Why Choose AEGIS - Structured Carousel */}
+      <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 md:mb-20">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-black">{content.whyChoose.title}</h2>
-            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6 text-black jp-heading">{content.whyChoose.title}</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto jp-body-text">
               {content.whyChoose.subtitle}
             </p>
             <div className="w-24 h-1 mx-auto mt-6 bg-primary" />
           </div>
 
-          {/* Visual Statistics Banner */}
-          <div className="bg-white p-8 md:p-12 mb-16 border border-gray-200">
+          {/* Statistics Banner */}
+          <div className="bg-white p-12 mb-16 shadow-lg">
             <div className="grid md:grid-cols-4 gap-8 text-center">
-              <div>
-                <div className="text-5xl font-black text-primary mb-2">50+</div>
-                <p className="text-gray-600">完了プロジェクト</p>
-              </div>
-              <div>
-                <div className="text-5xl font-black text-primary mb-2">99%</div>
-                <p className="text-gray-600">顧客満足度</p>
-              </div>
-              <div>
-                <div className="text-5xl font-black text-primary mb-2">24/7</div>
-                <p className="text-gray-600">サポート体制</p>
-              </div>
-              <div>
-                <div className="text-5xl font-black text-primary mb-2">200+</div>
-                <p className="text-gray-600">専門技術者</p>
-              </div>
+              {[
+                { number: "50+", label: "完了プロジェクト" },
+                { number: "99%", label: "顧客満足度" },
+                { number: "24/7", label: "サポート体制" },
+                { number: "200+", label: "専門技術者" }
+              ].map((stat, idx) => (
+                <div key={idx}>
+                  <div className="text-5xl font-bold text-primary mb-2">{stat.number}</div>
+                  <p className="text-gray-600">{stat.label}</p>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Horizontal Carousel Container */}
+          {/* Carousel */}
           <div className="relative overflow-hidden">
             <div className="relative h-[600px]">
               <div
@@ -717,9 +897,8 @@ export default function AegisHomepage() {
                   },
                 ].map((advantage, index) => (
                   <div key={index} className="w-full flex-shrink-0 px-4">
-                    <div className="max-w-2xl mx-auto">
-                      {/* Visual Card Design */}
-                      <div className="bg-white border border-gray-200 overflow-hidden shadow-xl">
+                    <div className="max-w-3xl mx-auto">
+                      <div className="bg-white shadow-xl overflow-hidden">
                         <div className="relative h-64">
                           <Image
                             src={advantage.bgImage}
@@ -729,7 +908,7 @@ export default function AegisHomepage() {
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                           <div className="absolute top-6 left-6">
-                            <div className="text-6xl font-black text-white/20">{advantage.number}</div>
+                            <div className="text-6xl font-bold text-white/20">{advantage.number}</div>
                           </div>
                           <div className="absolute bottom-6 left-6 right-6">
                             <h3 className="text-2xl font-bold text-white mb-2">{advantage.title}</h3>
@@ -738,9 +917,8 @@ export default function AegisHomepage() {
                         </div>
 
                         <div className="p-8">
-                          <p className="text-gray-600 leading-relaxed mb-6">{advantage.description}</p>
+                          <p className="text-gray-600 leading-relaxed mb-6 jp-body-text">{advantage.description}</p>
 
-                          {/* Details List */}
                           <div className="space-y-3 mb-6">
                             {advantage.details.map((detail, idx) => (
                               <div key={idx} className="flex items-start">
@@ -750,9 +928,12 @@ export default function AegisHomepage() {
                             ))}
                           </div>
 
-                          <button className="w-full bg-gray-100 text-gray-700 font-medium py-3 hover:bg-primary hover:text-white transition-all duration-300">
+                          <Link
+                            href="/about"
+                            className="block w-full bg-gray-100 text-gray-700 font-medium py-3 text-center hover:bg-primary hover:text-white transition-all duration-300"
+                          >
                             詳細を見る →
-                          </button>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -761,15 +942,15 @@ export default function AegisHomepage() {
               </div>
             </div>
 
-            {/* Navigation Dots */}
+            {/* Navigation */}
             <div className="flex justify-center mt-8 space-x-3">
               {[0, 1, 2].map((index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentAdvantageSlide(index)}
-                  className={`transition-all duration-300 ${index === currentAdvantageSlide
-                    ? "w-12 h-3 bg-primary"
-                    : "w-3 h-3 bg-gray-300"
+                  className={`h-2 transition-all duration-300 ${index === currentAdvantageSlide
+                    ? "w-8 bg-primary"
+                    : "w-2 bg-gray-300"
                     }`}
                 />
               ))}
@@ -792,12 +973,14 @@ export default function AegisHomepage() {
         </div>
       </section>
 
-      {/* Success Stories Carousel */}
-      <section id="projects" className="py-20 bg-white">
+      {/* Success Stories */}
+      <section id="projects" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">成功事例</h2>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4 text-black jp-heading">成功事例</h2>
+            <div className="w-24 h-1 mx-auto bg-primary" />
           </div>
+
           <div className="relative overflow-hidden">
             <div
               className="flex transition-transform duration-500 ease-in-out"
@@ -805,10 +988,10 @@ export default function AegisHomepage() {
             >
               {successStories.map((story, index) => (
                 <div key={index} className="w-full flex-shrink-0">
-                  <div className="bg-white shadow-xl max-w-4xl mx-auto border border-gray-100">
+                  <div className="bg-white shadow-xl max-w-4xl mx-auto">
                     <div className="grid md:grid-cols-2">
                       <div className="p-8">
-                        <h3 className="text-2xl font-bold mb-6 text-black">{story.title}</h3>
+                        <h3 className="text-2xl font-bold mb-6 text-black jp-heading">{story.title}</h3>
                         <div className="flex items-center space-x-4">
                           <div className="w-16 h-16 bg-gray-100 flex items-center justify-center">
                             <CheckCircle className="w-8 h-8 text-primary" strokeWidth={1.5} />
@@ -831,12 +1014,13 @@ export default function AegisHomepage() {
                 </div>
               ))}
             </div>
-            <div className="flex justify-center mt-8 space-x-2">
+
+            <div className="flex justify-center mt-8 space-x-3">
               {successStories.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentSuccessSlide(index)}
-                  className={`w-3 h-3 transition-all duration-300 ${index === currentSuccessSlide ? "bg-primary w-8" : "bg-gray-300"
+                  className={`h-2 transition-all duration-300 ${index === currentSuccessSlide ? "w-8 bg-primary" : "w-2 bg-gray-300"
                     }`}
                 />
               ))}
@@ -845,409 +1029,296 @@ export default function AegisHomepage() {
         </div>
       </section>
 
-      {/* Technology Innovation - Enhanced Visual Design */}
-      <section id="technology" className="py-20 bg-gray-50 border-t border-gray-100">
+      {/* Technology Innovation */}
+      <section id="technology" className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">技術・イノベーション</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4 text-black jp-heading">技術・イノベーション</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto jp-body-text">
               最先端技術を活用し、自治体の課題解決と市民サービスの向上を実現する革新的なソリューションを提供します。
             </p>
+            <div className="w-24 h-1 mx-auto mt-6 bg-primary" />
           </div>
 
-          {/* Technology Grid with Visual Cards */}
+          {/* Technology Grid */}
           <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-white p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
-              <div className="flex justify-between items-start mb-6">
-                <div>
-                  <h3 className="text-2xl font-bold text-black mb-2">AI・機械学習</h3>
-                  <p className="text-gray-600">Artificial Intelligence & Machine Learning</p>
+            {[
+              {
+                title: "AI・機械学習",
+                subtitle: "Artificial Intelligence & Machine Learning",
+                icon: "AI",
+                description: "自然言語処理と画像認識技術により、市民からの問い合わせ対応を自動化。",
+                stats: [
+                  { label: "導入効果", value: "応答時間90%短縮" },
+                  { label: "精度", value: "98.5%の正答率" }
+                ]
+              },
+              {
+                title: "IoTセンサーネットワーク",
+                subtitle: "Internet of Things Network",
+                icon: "IoT",
+                description: "都市インフラ全体にセンサーを配置し、リアルタイムでデータを収集・分析。",
+                stats: [
+                  { label: "センサー数", value: "10,000+設置" },
+                  { label: "データ処理", value: "リアルタイム分析" }
+                ]
+              },
+              {
+                title: "クラウドプラットフォーム",
+                subtitle: "Cloud Computing Platform",
+                icon: "☁",
+                description: "高可用性と拡張性を備えたクラウド基盤により、行政システムの安定稼働を保証。",
+                stats: [
+                  { label: "稼働率", value: "99.99%保証" },
+                  { label: "コスト削減", value: "40%のIT費用削減" }
+                ]
+              },
+              {
+                title: "データ分析・可視化",
+                subtitle: "Data Analytics & Visualization",
+                icon: "📊",
+                description: "膨大な行政データを分析し、直感的なダッシュボードで可視化。",
+                stats: [
+                  { label: "処理データ量", value: "1TB/日" },
+                  { label: "意思決定速度", value: "5倍高速化" }
+                ]
+              }
+            ].map((tech, idx) => (
+              <div key={idx} className="bg-white p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+                <div className="flex justify-between items-start mb-6">
+                  <div>
+                    <h3 className="text-2xl font-bold text-black mb-2">{tech.title}</h3>
+                    <p className="text-gray-600">{tech.subtitle}</p>
+                  </div>
+                  <div className="text-5xl font-bold text-gray-100">{tech.icon}</div>
                 </div>
-                <div className="text-5xl font-black text-gray-100">AI</div>
-              </div>
-              <p className="text-gray-700 mb-6 leading-relaxed">
-                自然言語処理と画像認識技術により、市民からの問い合わせ対応を自動化。
-                過去のデータから学習し、より精度の高いサービス提供を実現します。
-              </p>
-              <div className="space-y-3">
-                <div className="flex justify-between p-3 bg-gray-50">
-                  <span className="text-gray-600">導入効果</span>
-                  <span className="font-bold">応答時間90%短縮</span>
-                </div>
-                <div className="flex justify-between p-3 bg-gray-50">
-                  <span className="text-gray-600">精度</span>
-                  <span className="font-bold">98.5%の正答率</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
-              <div className="flex justify-between items-start mb-6">
-                <div>
-                  <h3 className="text-2xl font-bold text-black mb-2">IoTセンサーネットワーク</h3>
-                  <p className="text-gray-600">Internet of Things Network</p>
-                </div>
-                <div className="text-5xl font-black text-gray-100">IoT</div>
-              </div>
-              <p className="text-gray-700 mb-6 leading-relaxed">
-                都市インフラ全体にセンサーを配置し、リアルタイムでデータを収集・分析。
-                交通渋滞の解消、エネルギー効率の改善、災害時の迅速な対応を可能にします。
-              </p>
-              <div className="space-y-3">
-                <div className="flex justify-between p-3 bg-gray-50">
-                  <span className="text-gray-600">センサー数</span>
-                  <span className="font-bold">10,000+設置</span>
-                </div>
-                <div className="flex justify-between p-3 bg-gray-50">
-                  <span className="text-gray-600">データ処理</span>
-                  <span className="font-bold">リアルタイム分析</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
-              <div className="flex justify-between items-start mb-6">
-                <div>
-                  <h3 className="text-2xl font-bold text-black mb-2">クラウドプラットフォーム</h3>
-                  <p className="text-gray-600">Cloud Computing Platform</p>
-                </div>
-                <div className="text-5xl font-black text-gray-100">☁</div>
-              </div>
-              <p className="text-gray-700 mb-6 leading-relaxed">
-                高可用性と拡張性を備えたクラウド基盤により、行政システムの安定稼働を保証。
-                災害時でもサービスを継続し、市民への影響を最小限に抑えます。
-              </p>
-              <div className="space-y-3">
-                <div className="flex justify-between p-3 bg-gray-50">
-                  <span className="text-gray-600">稼働率</span>
-                  <span className="font-bold">99.99%保証</span>
-                </div>
-                <div className="flex justify-between p-3 bg-gray-50">
-                  <span className="text-gray-600">コスト削減</span>
-                  <span className="font-bold">40%のIT費用削減</span>
+                <p className="text-gray-700 mb-6 leading-relaxed jp-body-text">
+                  {tech.description}
+                </p>
+                <div className="space-y-3">
+                  {tech.stats.map((stat, statIdx) => (
+                    <div key={statIdx} className="flex justify-between p-3 bg-gray-50">
+                      <span className="text-gray-600">{stat.label}</span>
+                      <span className="font-bold">{stat.value}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
-            </div>
-
-            <div className="bg-white p-8 border border-gray-200 hover:shadow-lg transition-all duration-300">
-              <div className="flex justify-between items-start mb-6">
-                <div>
-                  <h3 className="text-2xl font-bold text-black mb-2">データ分析・可視化</h3>
-                  <p className="text-gray-600">Data Analytics & Visualization</p>
-                </div>
-                <div className="text-5xl font-black text-gray-100">📊</div>
-              </div>
-              <p className="text-gray-700 mb-6 leading-relaxed">
-                膨大な行政データを分析し、直感的なダッシュボードで可視化。
-                データに基づいた政策立案と効果測定により、より良い行政運営を支援します。
-              </p>
-              <div className="space-y-3">
-                <div className="flex justify-between p-3 bg-gray-50">
-                  <span className="text-gray-600">処理データ量</span>
-                  <span className="font-bold">1TB/日</span>
-                </div>
-                <div className="flex justify-between p-3 bg-gray-50">
-                  <span className="text-gray-600">意思決定速度</span>
-                  <span className="font-bold">5倍高速化</span>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
 
           {/* Technology Roadmap */}
-          <div className="bg-primary text-white p-8 md:p-12">
-            <h3 className="text-2xl font-bold mb-6 text-center">技術ロードマップ</h3>
+          <div className="bg-primary text-white p-12">
+            <h3 className="text-2xl font-bold mb-8 text-center">技術ロードマップ</h3>
             <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="text-4xl font-black mb-2">2024</div>
-                <p className="text-white/80">AI基盤の強化とIoT展開</p>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-black mb-2">2025</div>
-                <p className="text-white/80">統合プラットフォームの完成</p>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-black mb-2">2026</div>
-                <p className="text-white/80">次世代スマートシティの実現</p>
-              </div>
+              {[
+                { year: "2024", desc: "AI基盤の強化とIoT展開" },
+                { year: "2025", desc: "統合プラットフォームの完成" },
+                { year: "2026", desc: "次世代スマートシティの実現" }
+              ].map((item, idx) => (
+                <div key={idx} className="text-center">
+                  <div className="text-4xl font-bold mb-2">{item.year}</div>
+                  <p className="text-white/80">{item.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Member Companies Section */}
-      <section id="about" className="py-20 md:py-32 bg-white">
+      <section id="about" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 md:mb-20">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-black">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6 text-black jp-heading">
               {content.memberCompanies.title}
             </h2>
-            <p className="text-xl md:text-2xl font-semibold mb-4 text-gray-700">
+            <p className="text-2xl font-semibold mb-4 text-gray-700">
               {content.memberCompanies.subtitle}
             </p>
-            <p className="text-base md:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed jp-body-text">
               {content.memberCompanies.description}
             </p>
             <div className="w-24 h-1 mx-auto mt-6 bg-primary" />
           </div>
 
-          {/* Main Grid Layout */}
-          <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-start mb-12 md:mb-20">
+          {/* Company Info Grid */}
+          <div className="grid lg:grid-cols-2 gap-12 mb-16">
             {/* Company Information Card */}
-            <div>
-              <div className="bg-white border border-gray-200 overflow-hidden shadow-lg">
-                <div className="h-1 w-full bg-primary" />
-                <div className="p-6 md:p-8">
-                  <div className="flex items-center mb-6">
-                    <div>
-                      <h3 className="text-xl font-bold text-black">本社所在地</h3>
-                      <p className="text-sm text-gray-600">本社</p>
-                    </div>
+            <div className="bg-white shadow-lg overflow-hidden">
+              <div className="h-1 w-full bg-primary" />
+              <div className="p-8">
+                <h3 className="text-xl font-bold text-black mb-6">本社所在地</h3>
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="text-2xl font-bold mb-2 text-black">AEGIS LLP</h4>
+                    <p className="text-lg text-gray-600">
+                      〒100-0001<br />
+                      東京都千代田区千代田1-1-1
+                    </p>
                   </div>
-                  <div className="space-y-4">
+                  <div className="border-t pt-4">
+                    <div className="text-3xl font-bold mb-2 text-primary">
+                      03-1234-5678
+                    </div>
+                    <p className="text-sm text-gray-600">[受付時間] 平日 9:00-17:00</p>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4 pt-4 border-t">
                     <div>
-                      <h4 className="text-2xl font-bold mb-2 text-black">AEGIS LLP</h4>
-                      <p className="text-lg text-gray-600">
-                        〒100-0001<br />
-                        東京都千代田区千代田1-1-1
-                      </p>
+                      <div className="text-gray-700">設立</div>
+                      <div className="text-2xl font-bold text-black">2020年</div>
                     </div>
-                    <div className="border-t pt-4">
-                      <div className="text-2xl md:text-3xl font-bold mb-2 text-primary">
-                        <a href="tel:03-1234-5678">TEL: 03-1234-5678</a>
-                      </div>
-                      <p className="text-sm text-gray-600">[受付時間] 平日 9:00-17:00</p>
-                    </div>
-                    <div className="grid grid-cols-2 gap-4 pt-4 border-t">
-                      <div>
-                        <div className="text-lg font-bold text-gray-700">設立</div>
-                        <div className="text-2xl font-bold text-black">2020年</div>
-                      </div>
-                      <div>
-                        <div className="text-lg font-bold text-gray-700">従業員数</div>
-                        <div className="text-2xl font-bold text-black">200名</div>
-                      </div>
+                    <div>
+                      <div className="text-gray-700">従業員数</div>
+                      <div className="text-2xl font-bold text-black">200名</div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Statistics Cards - Vertical Carousel */}
+            {/* Statistics */}
             <div>
-              <h3 className="text-2xl font-bold mb-8 text-center text-gray-700">グループ統計</h3>
-              <div className="relative h-48 overflow-hidden">
-                <div className="relative h-full">
-                  {[
-                    {
-                      number: "2020年",
-                      label: "LLP設立年",
-                      percentage: "100%",
-                      value: 100,
-                    },
-                    {
-                      number: "200名",
-                      label: "専門技術者",
-                      percentage: "100%",
-                      value: 100,
-                    },
-                    {
-                      number: "50+",
-                      label: "完了プロジェクト",
-                      percentage: "99%",
-                      value: 99,
-                    },
-                    {
-                      number: "15",
-                      label: "自治体パートナー",
-                      percentage: "全国展開",
-                      value: 100,
-                    },
-                  ].map((stat, index) => (
-                    <div
-                      key={index}
-                      className={`absolute w-full h-full p-6 bg-white shadow-md transition-all duration-700 ease-in-out ${index === currentStatSlide
-                        ? "opacity-100 translate-y-0"
-                        : index === (currentStatSlide - 1 + 4) % 4
-                          ? "opacity-0 -translate-y-full"
-                          : "opacity-0 translate-y-full"
-                        }`}
-                    >
-                      <div className="text-center h-full flex flex-col justify-center">
-                        <div className="text-4xl font-bold mb-2 text-black">
-                          {stat.number}
-                        </div>
-                        <div className="text-sm font-medium text-gray-600 mb-4">{stat.label}</div>
-                        <div className="relative">
-                          <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
-                            <div
-                              className={`h-3 bg-gray-400 rounded-full transition-all ease-out ${index === currentStatSlide ? "duration-2000" : "duration-0"
-                                }`}
-                              style={{
-                                width: index === currentStatSlide ? `${stat.value}%` : "0%",
-                                transitionDelay: index === currentStatSlide ? "200ms" : "0ms",
-                              }}
-                            />
-                          </div>
-                          <div className="text-sm font-bold mt-2 text-gray-600">
-                            {stat.percentage}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                {/* Carousel Indicators */}
-                <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                  {[0, 1, 2, 3].map((index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentStatSlide(index)}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentStatSlide ? "bg-gray-600 w-4" : "bg-gray-300"
-                        }`}
-                    />
-                  ))}
-                </div>
+              <h3 className="text-2xl font-bold mb-8 text-black">グループ統計</h3>
+              <div className="grid grid-cols-2 gap-6">
+                {[
+                  { number: "2020年", label: "LLP設立年" },
+                  { number: "200名", label: "専門技術者" },
+                  { number: "50+", label: "完了プロジェクト" },
+                  { number: "15", label: "自治体パートナー" }
+                ].map((stat, idx) => (
+                  <div key={idx} className="bg-gray-50 p-6 text-center">
+                    <div className="text-3xl font-bold mb-2 text-black">{stat.number}</div>
+                    <div className="text-sm text-gray-600">{stat.label}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Contact Information Block */}
-          <div id="contact" className="mb-12 md:mb-16">
-            <div className="border border-gray-200 overflow-hidden bg-white shadow-lg">
+          {/* Contact CTA Block */}
+          <div id="contact" className="mb-16">
+            <div className="bg-white shadow-lg overflow-hidden">
               <div className="grid md:grid-cols-3">
-                <div className="p-6 md:p-8 text-center bg-gray-50 border-b md:border-b-0 md:border-r border-gray-200">
-                  <div className="text-3xl md:text-4xl font-bold mb-2 text-primary">
-                    <a href="tel:0575-28-3313">0575-28-3313</a>
+                <div className="p-8 text-center bg-gray-50 border-r border-gray-200">
+                  <div className="text-4xl font-bold mb-2 text-primary">
+                    0575-28-3313
                   </div>
                   <div className="text-gray-600 text-sm">[受付時間] 平日8:10-17:30</div>
-                  <div className="text-sm mt-2 text-gray-500">緊急サポート: 24時間対応</div>
                 </div>
-                <div className="p-6 md:p-8 text-center bg-white border-b md:border-b-0 md:border-r border-gray-200">
-                  <div className="text-xl md:text-2xl font-bold mb-2 text-black">緊急連絡先</div>
+                <div className="p-8 text-center bg-white border-r border-gray-200">
+                  <div className="text-2xl font-bold mb-2 text-black">緊急連絡先</div>
                   <div className="text-lg font-bold text-primary">03-1234-5679</div>
-                  <div className="text-sm text-gray-600 mt-2">システム障害・セキュリティ</div>
+                  <div className="text-sm text-gray-600 mt-2">24時間対応</div>
                 </div>
-                <div className="p-6 md:p-8 text-center bg-gray-50">
+                <div className="p-8 bg-primary text-white text-center">
                   <Link
-                    href="#contact"
-                    className="block w-full bg-primary text-white font-bold py-4 text-lg md:text-xl hover:bg-primary/90 transition-colors"
+                    href="/contact"
+                    className="text-xl font-bold hover:underline"
                   >
-                    お問い合わせ
+                    お問い合わせ →
                   </Link>
-                  <div className="text-sm text-gray-600 mt-2">専門チームが対応いたします</div>
+                  <div className="text-sm mt-2">専門チームが対応</div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Member Companies Circular Layout */}
-          <div className="relative">
-            <h3 className="text-2xl font-bold mb-8 text-center text-black">メンバー企業連携</h3>
-            <div className="relative w-96 h-96 mx-auto hidden md:block">
-              {/* Background connection lines */}
-              <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 0 }}>
-                {Array.from({ length: 8 }, (_, i) => {
-                  const angle = (i * 45 - 90) * (Math.PI / 180)
-                  const centerX = 192
-                  const centerY = 192
-                  const radius = 140
-                  const endX = centerX + Math.cos(angle) * radius
-                  const endY = centerY + Math.sin(angle) * radius
+          {/* Member Companies Network */}
+          <div className="text-center">
+            <h3 className="text-2xl font-bold mb-12 text-black">メンバー企業連携</h3>
+            <div className="relative w-96 h-96 mx-auto">
+              {/* Network visualization */}
+
+              {/* Network Diagram */}
+              <div className="relative w-full max-w-4xl mx-auto h-96 mb-16">
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-primary text-white flex items-center justify-center z-20">
+                  <div className="text-center">
+                    <Layers className="w-8 h-8 mx-auto mb-2" strokeWidth={1.5} />
+                    <div className="font-bold">AEGIS LLP</div>
+                  </div>
+                </div>
+                {memberCompanies.slice(0, 8).map((company, index) => {
+                  const angle = (index * 45) * Math.PI / 180
+                  const radius = 150
+                  const x = Math.cos(angle) * radius
+                  const y = Math.sin(angle) * radius
 
                   return (
-                    <line
-                      key={i}
-                      x1={centerX}
-                      y1={centerY}
-                      x2={endX}
-                      y2={endY}
-                      stroke="#e5e7eb"
-                      strokeWidth="2"
-                    />
+                    <div
+                      key={index}
+                      className="absolute w-20 h-20 bg-white border-2 border-gray-300 shadow-md flex items-center justify-center hover:shadow-lg transition-all duration-300 cursor-pointer"
+                      style={{
+                        left: `calc(50% + ${x}px - 40px)`,
+                        top: `calc(50% + ${y}px - 40px)`,
+                      }}
+                      onClick={() => setSelectedCompany(index)}
+                    >
+                      <div className="text-center">
+                        {company.icon}
+                        <div className="text-xs font-bold mt-1">{company.id}</div>
+                      </div>
+                    </div>
                   )
                 })}
-              </svg>
-              {/* Center Circle */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-primary text-white flex items-center justify-center font-bold text-sm z-20 shadow-lg">
-                <div className="text-center">
-                  <Users className="w-6 h-6 mx-auto mb-1" strokeWidth={1.5} />
-                  <div className="text-xs">AEGIS</div>
-                </div>
-              </div>
-              {/* Member Company Circles */}
-              {[
-                { id: "C1", angle: 0 },
-                { id: "C2", angle: 45 },
-                { id: "C3", angle: 90 },
-                { id: "C4", angle: 135 },
-                { id: "C5", angle: 180 },
-                { id: "C6", angle: 225 },
-                { id: "C7", angle: 270 },
-                { id: "C8", angle: 315 },
-              ].map((company) => {
-                const angleRad = ((company.angle - 90) * Math.PI) / 180
-                const radius = 140
-                const x = Math.cos(angleRad) * radius
-                const y = Math.sin(angleRad) * radius
-                return (
-                  <div
-                    key={company.id}
-                    className="absolute w-16 h-16 border border-gray-300 bg-white flex items-center justify-center hover:shadow-lg transition-all duration-300 cursor-pointer z-10"
-                    style={{
-                      left: `calc(50% + ${x}px - 32px)`,
-                      top: `calc(50% + ${y}px - 32px)`,
-                    }}
-                  >
-                    <div className="text-center">
-                      <Building2
-                        className="w-5 h-5 mx-auto mb-1 text-gray-600"
-                        strokeWidth={1.5}
+                {/* Connection Lines */}
+                <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 0 }}>
+                  {memberCompanies.slice(0, 8).map((_, index) => {
+                    const angle = (index * 45) * Math.PI / 180
+                    const radius = 150
+                    const x = Math.cos(angle) * radius
+                    const y = Math.sin(angle) * radius
+
+                    return (
+                      <line
+                        key={index}
+                        x1="50%"
+                        y1="50%"
+                        x2={`calc(50% + ${x}px)`}
+                        y2={`calc(50% + ${y}px)`}
+                        stroke="#e5e7eb"
+                        strokeWidth="2"
+                        strokeDasharray="5,5"
                       />
-                      <div className="text-xs font-bold text-gray-700">{company.id}</div>
-                    </div>
-                  </div>
-                )
-              })}
+                    )
+                  })}
+                </svg>
+              </div>
             </div>
-            {/* Mobile version */}
-            <div className="grid grid-cols-4 gap-4 md:hidden">
-              {[...Array(8)].map((_, i) => (
-                <div
-                  key={i}
-                  className="w-16 h-16 border border-gray-300 bg-white flex items-center justify-center shadow-sm"
-                >
-                  <div className="text-center">
-                    <Building2 className="w-4 h-4 mx-auto mb-1 text-gray-600" strokeWidth={1.5} />
-                    <div className="text-xs font-bold">C{i + 1}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <p className="text-center text-sm text-gray-600 mt-8 max-w-2xl mx-auto">
-              各企業の専門性が中央で統合され、シナジー効果を生み出します。専門分野の異なる9社が連携することで、お客様のあらゆるニーズにワンストップで対応いたします。
+
+            <p className="text-sm text-gray-600 mt-8 max-w-2xl mx-auto">
+              各企業の専門性が中央で統合され、シナジー効果を生み出します。
             </p>
           </div>
 
+          {/* link to member-companies */}
+          <div className="text-center mt-12">
+            <Link
+              href="/member-companies"
+              className="inline-flex items-center bg-primary text-white font-medium px-8 py-3 hover:bg-primary/90 transition-colors"
+            >
+              メンバー企業一覧を見る →
+              <ArrowRight className="w-5 h-5 ml-3" />
+            </Link>
+          </div>
+
+
           {/* Collaboration Process */}
-          <div className="bg-gray-50 p-8 md:p-12 border-l-4 border-primary mt-12 md:mt-16">
+          <div className="bg-gray-50 p-12 mt-16">
             <h3 className="text-2xl font-bold mb-8 text-center text-black">連携プロセス</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
-                { step: "０１", title: "課題分析", desc: "各社の専門知識を結集" },
-                { step: "０２", title: "ソリューション設計", desc: "最適なチーム編成" },
-                { step: "０３", title: "実装・展開", desc: "協調的プロジェクト実行" },
-                { step: "０４", title: "継続サポート", desc: "統合サポート体制" },
+                { step: "01", title: "課題分析", desc: "各社の専門知識を結集" },
+                { step: "02", title: "ソリューション設計", desc: "最適なチーム編成" },
+                { step: "03", title: "実装・展開", desc: "協調的プロジェクト実行" },
+                { step: "04", title: "継続サポート", desc: "統合サポート体制" },
               ].map((process, index) => (
-                <div key={index} className="text-center relative">
-                  <div className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-4 bg-primary text-white flex items-center justify-center font-bold text-lg md:text-xl jp-numbers">
+                <div key={index} className="text-center">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-primary text-white flex items-center justify-center font-bold text-xl">
                     {process.step}
                   </div>
-                  <h4 className="font-bold mb-2 text-black text-sm md:text-base">{process.title}</h4>
-                  <p className="text-xs md:text-sm text-gray-600">{process.desc}</p>
-                  {index < 3 && (
-                    <div className="hidden md:block absolute top-6 md:top-8 -right-4 w-8 h-0.5 bg-gray-300" />
-                  )}
+                  <h4 className="font-bold mb-2 text-black">{process.title}</h4>
+                  <p className="text-sm text-gray-600">{process.desc}</p>
                 </div>
               ))}
             </div>
@@ -1255,13 +1326,14 @@ export default function AegisHomepage() {
         </div>
       </section>
 
-      {/* Latest News Carousel */}
-      <section className="py-20 md:py-32 bg-gray-50">
+      {/* Latest News */}
+      <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 md:mb-20">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-black">最新情報</h2>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6 text-black jp-heading">最新情報</h2>
             <div className="w-24 h-1 mx-auto bg-primary" />
           </div>
+
           <div className="relative max-w-5xl mx-auto">
             <div className="relative overflow-hidden">
               <div
@@ -1270,66 +1342,65 @@ export default function AegisHomepage() {
               >
                 {newsItems.map((news, index) => (
                   <div key={index} className="w-full flex-shrink-0">
-                    <div className="bg-white border border-gray-200 overflow-hidden shadow-xl">
-                      <div className="relative">
-                        <div className="relative h-64 md:h-96">
-                          <Image
-                            src={news.image}
-                            alt={news.title}
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
+                    <div className="bg-white shadow-xl overflow-hidden">
+                      <div className="relative h-64 md:h-96">
+                        <Image
+                          src={news.image}
+                          alt={news.title}
+                          fill
+                          className="object-cover"
+                        />
                         <div className="absolute inset-0 bg-black/60" />
                         <div className="absolute top-8 left-8">
-                          <div
-                            className="px-4 py-2 bg-white text-primary text-sm font-medium mb-4"
-                          >
+                          <div className="px-4 py-2 bg-white text-primary text-sm font-medium mb-4">
                             {news.category}
                           </div>
                           <div className="text-white text-lg mb-2">{news.date}</div>
                         </div>
                         <div className="absolute bottom-8 left-8 right-8">
-                          <h3 className="text-white text-2xl md:text-3xl font-bold leading-tight mb-4">
+                          <h3 className="text-white text-2xl md:text-3xl font-bold leading-tight">
                             {news.title}
                           </h3>
                         </div>
                       </div>
                       <div className="p-8 md:p-12">
-                        <p className="text-gray-600 text-base md:text-xl leading-relaxed mb-8">
+                        <p className="text-gray-600 text-lg leading-relaxed mb-8 jp-body-text">
                           {news.excerpt}
                         </p>
-                        <button
-                          className="bg-primary text-white font-medium px-6 md:px-8 py-3 md:py-4 text-base md:text-lg hover:bg-primary/90 transition-colors"
+                        <Link
+                          href="/news"
+                          className="inline-flex items-center bg-primary text-white font-medium px-8 py-3 hover:bg-primary/90 transition-colors"
                         >
                           続きを読む
-                          <ArrowRight className="w-5 h-5 ml-3 inline" strokeWidth={1.5} />
-                        </button>
+                          <ArrowRight className="w-5 h-5 ml-3" />
+                        </Link>
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
+
             {/* Navigation */}
             <button
               onClick={() => setCurrentNewsSlide((prev) => (prev - 1 + newsItems.length) % newsItems.length)}
-              className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white text-primary border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 z-10 flex items-center justify-center"
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white text-primary shadow-lg hover:shadow-xl transition-all duration-300 z-10 flex items-center justify-center"
             >
-              <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
+              <ChevronLeft className="w-6 h-6" />
             </button>
             <button
               onClick={() => setCurrentNewsSlide((prev) => (prev + 1) % newsItems.length)}
-              className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white text-primary border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 z-10 flex items-center justify-center"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white text-primary shadow-lg hover:shadow-xl transition-all duration-300 z-10 flex items-center justify-center"
             >
-              <ChevronRight className="w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
+              <ChevronRight className="w-6 h-6" />
             </button>
+
             <div className="flex justify-center mt-8 space-x-3">
               {newsItems.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentNewsSlide(index)}
-                  className={`w-3 h-3 md:w-4 md:h-4 transition-all duration-300 ${index === currentNewsSlide ? "bg-primary w-8 md:w-10" : "bg-gray-300"
+                  className={`h-2 transition-all duration-300 ${index === currentNewsSlide ? "w-8 bg-primary" : "w-2 bg-gray-300"
                     }`}
                 />
               ))}
@@ -1342,10 +1413,10 @@ export default function AegisHomepage() {
       {showScrollTop && (
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed bottom-8 right-8 w-12 h-12 bg-primary text-white shadow-lg hover:shadow-xl transition-all duration-300 z-50 flex items-center justify-center"
+          className="fixed bottom-8 right-8 w-12 h-12 bg-primary text-white shadow-lg hover:shadow-xl transition-all duration-300 z-50 flex items-center justify-center group"
         >
           <svg
-            className="w-6 h-6"
+            className="w-6 h-6 group-hover:-translate-y-1 transition-transform"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

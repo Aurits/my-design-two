@@ -209,7 +209,7 @@ export default function CareersPage() {
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="max-w-4xl">
                             <h1 className="text-6xl md:text-8xl font-bold mb-8 text-white">
-                                CAREERS
+                                キャリア
                             </h1>
                             <p className="text-2xl text-gray-200 mb-6">採用情報</p>
                             <p className="text-xl text-gray-300 mb-12 leading-relaxed">
@@ -256,8 +256,8 @@ export default function CareersPage() {
                                     key={index}
                                     onClick={() => setActiveValueTab(index)}
                                     className={`px-8 py-3 font-medium transition-all duration-200 ${activeValueTab === index
-                                            ? "bg-white text-primary shadow-md"
-                                            : "text-gray-600 hover:text-gray-800"
+                                        ? "bg-white text-primary shadow-md"
+                                        : "text-gray-600 hover:text-gray-800"
                                         }`}
                                 >
                                     <div className="flex items-center gap-2">
