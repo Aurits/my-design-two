@@ -16,6 +16,7 @@ import { useState } from "react"
 
 export default function ServicesPage() {
     const [hoveredService, setHoveredService] = useState<number | null>(null)
+    const scrollY = typeof window !== "undefined" ? window.scrollY : 0
 
     const services = [
         {
